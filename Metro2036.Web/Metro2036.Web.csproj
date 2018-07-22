@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Metro2036.Data\Metro2036.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\DTO\ImportDTO\" />
+    <Folder Include="Models\Point\" />
+    <Folder Include="Models\Passenger\" />
+    <Folder Include="Models\Train\" />
+    <Folder Include="Models\Station\" />
+    <Folder Include="Models\Route\" />
+    <Folder Include="wwwroot\seedfiles\" />
+  </ItemGroup>
+
+</Project>

@@ -1,33 +1,29 @@
-﻿namespace Metro2036.Models
+﻿namespace Metro2036.Web.Models.Dto.ImportDTO
 {
+    using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    public class Station
+    using System.Text;
+    using Newtonsoft.Json;
+
+    public class StationDtoImp
     {
-        [Key]
         public int Id { get; set; }
 
-        [Required]
+        [JsonProperty("id")]
         public int StantionId { get; set; }
-
-        [Required]
+        
+        [JsonProperty("route_id")]
         public int RouteId { get; set; }
 
-        [Required]
         public int Code { get; set; }
 
-        [Required]
+        [JsonProperty("point_id")]
         public int PointId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [Required]
         public decimal Latitude { get; set; }
 
-        [Required]
         public decimal Longitude { get; set; }
-
-        public ICollection<RouteStation> RouteStations { get; set; } = new List<RouteStation>();
     }
 }

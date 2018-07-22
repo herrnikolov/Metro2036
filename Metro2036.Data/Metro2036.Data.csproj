@@ -4,4 +4,19 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20180720121253_Train_Passenger.cs" />
+    <Compile Remove="Migrations\20180720121504_Train_PassengerII.cs" />
+    <Compile Remove="Migrations\20180720130218_Train_PassengerIII.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Metro2036.Models\Metro2036.Models.csproj" />
+  </ItemGroup>
+
 </Project>
