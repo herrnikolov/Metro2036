@@ -9,6 +9,8 @@
         public void Configure(EntityTypeBuilder<Passenger> builder)
         {
             builder.HasKey(p => p.Id);
+
+            builder.HasAlternateKey(p => p.TravelId);
         }
     }
 }

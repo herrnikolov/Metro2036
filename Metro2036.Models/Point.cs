@@ -13,7 +13,6 @@
         [Required]
         public int StopCode { get; set; }
 
-        [Required]
         public string StopName { get; set; }
 
         [Required]

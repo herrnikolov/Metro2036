@@ -1,0 +1,170 @@
+[
+	{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1019-5019-5020-1020",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1008-5008-5009-1009",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1014-5014-5015-1015",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1011-5011-5012-1012",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1010-5010-5013-1013",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1016-5016-5022-1022",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1017-5017-5023-1021",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1018-5018-5021-1023",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1001-5001-5005-1005",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1002-5002-5006-1006",
+		"RouteId": 1
+	},	
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1003-5003-5007-1007",
+		"RouteId": 1
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 80,
+		"Capacity": 370,
+		"YearOfManufacturing": 1990,
+		"SerialNumber": "1004-5004-5024-1024",
+		"RouteId": 1
+	},
+			{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2005,
+		"SerialNumber": "2001-6001-2002",
+		"RouteId": 2
+	},	
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2005,
+		"SerialNumber": "2003-6002-2004",
+		"RouteId": 2
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2005,
+		"SerialNumber": "2005-6003-2006",
+		"RouteId": 2
+	},	
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2006,
+		"SerialNumber": "2007-6004-2008",
+		"RouteId": 2
+	},	
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2006,
+		"SerialNumber": "2009-6005-2010",
+		"RouteId": 2
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2006,
+		"SerialNumber": "2011-6006-2012",
+		"RouteId": 2
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2009,
+		"SerialNumber": "2013-6007-2014",
+		"RouteId": 2
+	},	
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2009,
+		"SerialNumber": "2015-6008-2016",
+		"RouteId": 2
+	},
+		{
+		"Maker": "Метровагонмаш",
+		"OperationalSpeed": 90,
+		"Capacity": 344,
+		"YearOfManufacturing": 2009,
+		"SerialNumber": "2017-6009-2018",
+		"RouteId": 2
+	}
+]

@@ -6,8 +6,8 @@
     {
         [Key]
         public int Id { get; set; }
-
-
+        
+        public string TravelId { get; set; }
 
     }
 }

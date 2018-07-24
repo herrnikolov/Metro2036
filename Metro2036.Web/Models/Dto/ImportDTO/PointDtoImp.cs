@@ -1,4 +1,4 @@
-﻿namespace Metro2036.Web.Models.Dto.ImportDTO
+﻿namespace Metro2036.Web.Models.DTO.ImportDTO
 {
     using System;
     using System.Collections.Generic;

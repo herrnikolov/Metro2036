@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Metro2036.Data;
-
-
-namespace Metro2036.Web
+﻿namespace Metro2036.Web
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.HttpsPolicy;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Metro2036.Data;
+    using Metro2036.Web.Infrastructure.Extensions;
+    using AutoMapper;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -36,6 +37,11 @@ namespace Metro2036.Web
 
             //Enforce lowercase routing
             //services.AddRouting(options => options.LowercaseUrls = true);
+
+            //AutoMapper
+            Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -79,7 +85,7 @@ namespace Metro2036.Web
             app.UseMvcWithDefaultRoute();
 
             //TODO: Seed Database!
-            //app.SeedDatabase();
+            app.SeedDatabase();
         }
     }
 }

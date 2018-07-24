@@ -4,14 +4,16 @@ using Metro2036.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Metro2036.Data.Migrations
 {
     [DbContext(typeof(Metro2036DbContext))]
-    partial class Metro2036DbContextModelSnapshot : ModelSnapshot
+    [Migration("20180724104944_PointModelUpdate")]
+    partial class PointModelUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,12 +27,7 @@ namespace Metro2036.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("TravelId")
-                        .IsRequired();
-
                     b.HasKey("Id");
-
-                    b.HasAlternateKey("TravelId");
 
                     b.ToTable("Passengers");
                 });
