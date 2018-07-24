@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Extensions\" />
     <Folder Include="Models\DTO\ImportDTO\" />
     <Folder Include="Models\Point\" />
     <Folder Include="Models\Passenger\" />
