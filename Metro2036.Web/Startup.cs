@@ -82,6 +82,8 @@
             //        name: "default",
             //        template: "{controller=Home}/{action=Index}/{id?}");
             //});
+            app.UseWelcomePage();
+
             app.UseMvcWithDefaultRoute();
 
             //TODO: Seed Database!
