@@ -11,6 +11,7 @@
     using Metro2036.Data;
     using Metro2036.Web.Infrastructure.Extensions;
     using AutoMapper;
+    using System;
 
     public class Startup
     {
@@ -31,9 +32,17 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<Metro2036DbContext>(options =>
-            options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultConnection")));
+
+            // Use SQL Database if in Azure, otherwise, use SQLite
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<Metro2036DbContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
+            else
+                services.AddDbContext<Metro2036DbContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+				
+			// Automatically perform database migration
+            services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
 
             //Enforce lowercase routing
             //services.AddRouting(options => options.LowercaseUrls = true);
