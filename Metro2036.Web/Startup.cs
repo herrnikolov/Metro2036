@@ -1,4 +1,19 @@
-﻿namespace Metro2036.Web
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Metro2036.Web.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Metro2036.Web
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -32,40 +47,13 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Use SQL Database if in Azure, otherwise, use SQLite
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                services.AddDbContext<Metro2036DbContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
-            else
-                services.AddDbContext<Metro2036DbContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-				
-			// Automatically perform database migration
-            services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
-
-            //Enforce lowercase routing
-            //services.AddRouting(options => options.LowercaseUrls = true);
-
-            //AutoMapper
-            Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
-
-            services.AddAutoMapper(typeof(Startup));
-
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            //TODO: Move Default to /Home?
-            //services
-            //    .AddMvc(options =>
-            //    {
-            //        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-            //    })
-            //    .AddRazorPagesOptions(options =>
-            //    {
-            //        options.Conventions.AddPageRoute("/Home/Index", "/");
-            //    })
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +62,7 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -85,16 +74,14 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthentication();
 
-            //TODO: Seed Database!
-            app.SeedDatabase();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
