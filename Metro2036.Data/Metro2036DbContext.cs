@@ -3,8 +3,9 @@
     using Microsoft.EntityFrameworkCore;
     using Metro2036.Data.EntityConfiguration;
     using Metro2036.Models;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-    public class Metro2036DbContext : DbContext
+    public class Metro2036DbContext : IdentityDbContext
     {
         public Metro2036DbContext(DbContextOptions<Metro2036DbContext> options)
             : base(options)

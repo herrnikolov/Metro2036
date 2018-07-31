@@ -47,11 +47,42 @@ namespace Metro2036.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            // Use SQL Database if in Azure, otherwise, use Local SQL
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<Metro2036DbContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
+            else
+                services.AddDbContext<Metro2036DbContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Web")));
+
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<Metro2036DbContext>();
+
+            // Automatically perform database migration
+            services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
+
+            //Enforce lowercase routing
+            //services.AddRouting(options => options.LowercaseUrls = true);
+
+            //AutoMapper
+            Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //TODO: Move Default to /Home?
+            //services
+            //    .AddMvc(options =>
+            //    {
+            //        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            //    })
+            //    .AddRazorPagesOptions(options =>
+            //    {
+            //        options.Conventions.AddPageRoute("/Home/Index", "/");
+            //    })
+            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -76,12 +107,16 @@ namespace Metro2036.Web
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+            app.UseMvcWithDefaultRoute();
+
+            //TODO: Seed Database!
+            app.SeedDatabase();
         }
     }
 }
