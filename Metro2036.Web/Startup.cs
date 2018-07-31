@@ -53,13 +53,13 @@ namespace Metro2036.Web
                         options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
             else
                 services.AddDbContext<Metro2036DbContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Web")));
+                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Data")));
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<Metro2036DbContext>();
 
             // Automatically perform database migration
-            services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
+            //services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
 
             //Enforce lowercase routing
             //services.AddRouting(options => options.LowercaseUrls = true);

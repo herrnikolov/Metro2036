@@ -21,7 +21,7 @@
             {
                 var context = scope.ServiceProvider.GetService<Metro2036DbContext>();
 
-                context.Database.Migrate();
+                //context.Database.Migrate();
                 //SeedStations
                 if (!context.Stations.Any())
                 {
