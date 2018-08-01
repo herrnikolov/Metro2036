@@ -22,7 +22,9 @@ namespace Metro2036.Web.Controllers
         // GET: Points
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Points.ToListAsync());
+            return View(await _context.Points
+                .Where(p => p.StopName != null)
+                .ToListAsync());
         }
 
         // GET: Points/Details/5

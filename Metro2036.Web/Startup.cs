@@ -66,7 +66,6 @@ namespace Metro2036.Web
 
             //AutoMapper
             Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
@@ -107,13 +106,17 @@ namespace Metro2036.Web
 
             app.UseAuthentication();
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            //app.UseMvcWithDefaultRoute();
 
             //TODO: Seed Database!
             app.SeedDatabase();
