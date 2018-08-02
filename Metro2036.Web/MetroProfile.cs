@@ -19,7 +19,7 @@
             CreateMap<TrainDtoImp, Train>();
 
             //Passenger
-            CreateMap<PasswngerDtoImp, User>();
+            CreateMap<UserDtoImp, User>();
         }
     }
 }

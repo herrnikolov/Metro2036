@@ -8,26 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using Metro2036.Data;
 using Metro2036.Models;
 
-namespace Metro2036.Web.Controllers
+namespace Metro2036.Web.Areas.Admin.Controllers
 {
-    public class PointsController : Controller
+    [Area("Admin")]
+    public class TravelLogsController : Controller
     {
         private readonly Metro2036DbContext _context;
 
-        public PointsController(Metro2036DbContext context)
+        public TravelLogsController(Metro2036DbContext context)
         {
             _context = context;
         }
 
-        // GET: Points
+        // GET: Admin/TravelLogs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Points
-                .Where(p => p.StopName != null)
-                .ToListAsync());
+            return View(await _context.TravelLogs.ToListAsync());
         }
 
-        // GET: Points/Details/5
+        // GET: Admin/TravelLogs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +34,39 @@ namespace Metro2036.Web.Controllers
                 return NotFound();
             }
 
-            var point = await _context.Points
+            var travelLog = await _context.TravelLogs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (point == null)
+            if (travelLog == null)
             {
                 return NotFound();
             }
 
-            return View(point);
+            return View(travelLog);
         }
 
-        // GET: Points/Create
+        // GET: Admin/TravelLogs/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Points/Create
+        // POST: Admin/TravelLogs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,stop,StopCode,StopName,Latitude,Longitude,VehicleType")] Point point)
+        public async Task<IActionResult> Create([Bind("Id,TravelCardId,UserName,StationId,StationName")] TravelLog travelLog)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(point);
+                _context.Add(travelLog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(point);
+            return View(travelLog);
         }
 
-        // GET: Points/Edit/5
+        // GET: Admin/TravelLogs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +74,22 @@ namespace Metro2036.Web.Controllers
                 return NotFound();
             }
 
-            var point = await _context.Points.FindAsync(id);
-            if (point == null)
+            var travelLog = await _context.TravelLogs.FindAsync(id);
+            if (travelLog == null)
             {
                 return NotFound();
             }
-            return View(point);
+            return View(travelLog);
         }
 
-        // POST: Points/Edit/5
+        // POST: Admin/TravelLogs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,stop,StopCode,StopName,Latitude,Longitude,VehicleType")] Point point)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TravelCardId,UserName,StationId,StationName")] TravelLog travelLog)
         {
-            if (id != point.Id)
+            if (id != travelLog.Id)
             {
                 return NotFound();
             }
@@ -99,12 +98,12 @@ namespace Metro2036.Web.Controllers
             {
                 try
                 {
-                    _context.Update(point);
+                    _context.Update(travelLog);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PointExists(point.Id))
+                    if (!TravelLogExists(travelLog.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +114,10 @@ namespace Metro2036.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(point);
+            return View(travelLog);
         }
 
-        // GET: Points/Delete/5
+        // GET: Admin/TravelLogs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +125,30 @@ namespace Metro2036.Web.Controllers
                 return NotFound();
             }
 
-            var point = await _context.Points
+            var travelLog = await _context.TravelLogs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (point == null)
+            if (travelLog == null)
             {
                 return NotFound();
             }
 
-            return View(point);
+            return View(travelLog);
         }
 
-        // POST: Points/Delete/5
+        // POST: Admin/TravelLogs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var point = await _context.Points.FindAsync(id);
-            _context.Points.Remove(point);
+            var travelLog = await _context.TravelLogs.FindAsync(id);
+            _context.TravelLogs.Remove(travelLog);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PointExists(int id)
+        private bool TravelLogExists(int id)
         {
-            return _context.Points.Any(e => e.Id == id);
+            return _context.TravelLogs.Any(e => e.Id == id);
         }
     }
 }

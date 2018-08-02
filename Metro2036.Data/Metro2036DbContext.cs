@@ -17,7 +17,8 @@
         public DbSet<Point> Points { get; set; }
         public DbSet<RouteStation> RouteStations { get; set; }
         public DbSet<Train> Trains { get; set; }
-        public DbSet<User> Passengers { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<TravelLog> TravelLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,7 @@
             builder.ApplyConfiguration(new RouteStationConfiguration());
             builder.ApplyConfiguration(new TrainConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new TravelLogConfiguration());
 
             base.OnModelCreating(builder);
         }

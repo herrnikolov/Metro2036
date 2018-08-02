@@ -29,5 +29,7 @@
         public decimal Longitude { get; set; }
 
         public ICollection<RouteStation> RouteStations { get; set; } = new List<RouteStation>();
+
+        public ICollection<TravelLog> Travels { get; set; } = new List<TravelLog>();
     }
 }

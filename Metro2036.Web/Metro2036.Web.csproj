@@ -6,6 +6,52 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\**" />
+    <Content Remove="Areas\Admin\**" />
+    <EmbeddedResource Remove="Areas\Admin\**" />
+    <None Remove="Areas\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PointsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoutesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrainsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TravelLogsController.cs" />
+    <Compile Include="Areas\Admin\Models\Point\PointCreateViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Point\PointDetailsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Route\RouteConciseViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Route\RouteCreateViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Route\RouteDetailsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Station\StationCreateViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Station\StationDetailsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Train\TrainCreateViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Train\TrainDetailsViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Points\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Points\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Points\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Points\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Points\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Include="Areas\Admin\Views\_ViewImports.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -18,10 +64,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Shared\DispalyTemplates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Routes\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Routes\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Routes\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Routes\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Routes\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Stations\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Stations\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Stations\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Stations\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Stations\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Index.cshtml" />
+    <None Include="Areas\Admin\Views\TravelLogs\Create.cshtml" />
+    <None Include="Areas\Admin\Views\TravelLogs\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\TravelLogs\Details.cshtml" />
+    <None Include="Areas\Admin\Views\TravelLogs\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\TravelLogs\Index.cshtml" />
   </ItemGroup>
 
 </Project>

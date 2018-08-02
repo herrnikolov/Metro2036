@@ -4,14 +4,16 @@ using Metro2036.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Metro2036.Web.Data.Migrations
 {
     [DbContext(typeof(Metro2036DbContext))]
-    partial class Metro2036DbContextModelSnapshot : ModelSnapshot
+    [Migration("20180802120719_UserModel_TravelLog")]
+    partial class UserModel_TravelLog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,14 +154,10 @@ namespace Metro2036.Web.Data.Migrations
 
                     b.Property<int>("StationId");
 
-                    b.Property<string>("StationName");
-
                     b.Property<string>("TravelCardId")
                         .IsRequired();
 
                     b.Property<string>("UserId");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
