@@ -21,7 +21,7 @@
             {
                 var context = scope.ServiceProvider.GetService<Metro2036DbContext>();
 
-                //context.Database.Migrate();
+                context.Database.Migrate();
                 //SeedStations
                 if (!context.Stations.Any())
                 {
@@ -47,13 +47,13 @@
                     SeedTrains(context, trainDtos);
                 }
                 //SeedPassengers
-                if (!context.Passengers.Any())
-                {
-                    var deserializedPassengers = File.ReadAllText(@"wwwroot\seedfiles\passengers.json");
-                    var passengerDtos = JsonConvert.DeserializeObject<PasswngerDtoImp[]>(deserializedPassengers);
+                //if (!context.Passengers.Any())
+                //{
+                //    var deserializedPassengers = File.ReadAllText(@"wwwroot\seedfiles\passengers.json");
+                //    var passengerDtos = JsonConvert.DeserializeObject<PasswngerDtoImp[]>(deserializedPassengers);
 
-                    SeedPassengers(context, passengerDtos);
-                }
+                //    SeedPassengers(context, passengerDtos);
+                //}
             }
             return app;
         }
@@ -151,13 +151,13 @@
 
         private static void SeedPassengers(Metro2036DbContext context, PasswngerDtoImp[] deserializedPassengers)
         {
-            var validPassengers = new List<Passenger>();
+            var validPassengers = new List<User>();
 
             foreach (var passengerDto in deserializedPassengers)
             {
                 var passengerAlreadyExists = deserializedPassengers.Any(s => s.TravelId== passengerDto.TravelId);
 
-                var passenger = Mapper.Map<Passenger>(passengerDto);
+                var passenger = Mapper.Map<User>(passengerDto);
 
                 validPassengers.Add(passenger);
 

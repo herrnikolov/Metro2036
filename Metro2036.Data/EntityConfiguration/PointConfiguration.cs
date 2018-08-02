@@ -10,14 +10,13 @@
         {
             builder.HasKey(p => p.Id);
 
-            //builder.Property(p => p.Latitude)
-            //    .HasColumnType("decimal(18,6)")
-            //    .IsRequired();
+            builder.Property(p => p.Latitude)
+                .HasColumnType("decimal(18,6)")
+                .IsRequired();
 
-            //builder.Property(p => p.Longitude)
-            //    .HasColumnType("decimal(18,6)")
-            //    .IsRequired();
-
+            builder.Property(p => p.Longitude)
+                .HasColumnType("decimal(18,6)")
+                .IsRequired();
         }
     }
 }

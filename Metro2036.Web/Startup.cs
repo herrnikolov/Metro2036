@@ -27,6 +27,7 @@ namespace Metro2036.Web
     using Metro2036.Web.Infrastructure.Extensions;
     using AutoMapper;
     using System;
+    using Metro2036.Models;
 
     public class Startup
     {
@@ -55,8 +56,31 @@ namespace Metro2036.Web
                 services.AddDbContext<Metro2036DbContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Data")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            //NO
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<Metro2036DbContext>();
+
+            // From Lections
+            services
+                .AddIdentity<User, IdentityRole>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<Metro2036DbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password = new PasswordOptions()
+                {
+                    RequiredLength = 4,
+                    RequiredUniqueChars = 1,
+                    RequireLowercase = false,
+                    RequireDigit = false,
+                    RequireUppercase = false,
+                    RequireNonAlphanumeric = false
+                };
+
+                // options.SignIn.RequireConfirmedEmail = true;
+            });
 
             // Automatically perform database migration
             //services.BuildServiceProvider().GetService<Metro2036DbContext>().Database.Migrate();
