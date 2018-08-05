@@ -9,6 +9,14 @@
         public void Configure(EntityTypeBuilder<TravelLog> builder)
         {
             builder.HasKey(tl => tl.Id);
+
+            builder.HasOne(tl => tl.Station)
+                .WithMany(s => s.TravelLogs)
+                .HasForeignKey(tl => tl.StationId);
+
+            builder.HasOne(tl => tl.User)
+                .WithMany(s => s.Travels)
+                .HasForeignKey(tl => tl.UserId);
         }
     }
 }

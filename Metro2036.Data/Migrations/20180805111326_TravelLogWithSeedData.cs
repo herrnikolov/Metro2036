@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Metro2036.Web.Data.Migrations
 {
-    public partial class UserModel_TravelLog : Migration
+    public partial class TravelLogWithSeedData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,9 +18,8 @@ namespace Metro2036.Web.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TravelCardId = table.Column<string>(nullable: false),
-                    StationId = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(nullable: false),
+                    StationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +35,7 @@ namespace Metro2036.Web.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -30,6 +30,6 @@
 
         public ICollection<RouteStation> RouteStations { get; set; } = new List<RouteStation>();
 
-        public ICollection<TravelLog> Travels { get; set; } = new List<TravelLog>();
+        public ICollection<TravelLog> TravelLogs { get; set; } = new List<TravelLog>();
     }
 }

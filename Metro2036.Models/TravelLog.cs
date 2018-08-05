@@ -9,13 +9,13 @@
         public int Id { get; set; }
 
         [Required]
-        public string TravelCardId { get; set; }
+        public string UserId { get; set; }
 
-        public string UserName { get; set; }
+        public User User { get; set; }
 
         [Required]
         public int StationId { get; set; }
 
-        public string StationName { get; set; }
+        public Station Station { get; set; }
     }
 }

@@ -152,14 +152,8 @@ namespace Metro2036.Web.Data.Migrations
 
                     b.Property<int>("StationId");
 
-                    b.Property<string>("StationName");
-
-                    b.Property<string>("TravelCardId")
+                    b.Property<string>("UserId")
                         .IsRequired();
-
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -363,14 +357,15 @@ namespace Metro2036.Web.Data.Migrations
 
             modelBuilder.Entity("Metro2036.Models.TravelLog", b =>
                 {
-                    b.HasOne("Metro2036.Models.Station")
-                        .WithMany("Travels")
+                    b.HasOne("Metro2036.Models.Station", "Station")
+                        .WithMany("TravelLogs")
                         .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Metro2036.Models.User")
+                    b.HasOne("Metro2036.Models.User", "User")
                         .WithMany("Travels")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

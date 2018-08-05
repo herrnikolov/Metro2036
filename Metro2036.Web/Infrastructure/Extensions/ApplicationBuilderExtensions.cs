@@ -63,6 +63,15 @@
 
                 //    SeedPassengers(context, passengerDtos);
                 //}
+
+                //SeedTravelLog
+                if (!context.TravelLogs.Any())
+                {
+                    var deserializedTravelLog = File.ReadAllText(@"wwwroot\seedfiles\travellog.json");
+                    var travelLogsDtos = JsonConvert.DeserializeObject<TravelLogDtoImp[]>(deserializedTravelLog);
+
+                    SeedTravelLog(context, travelLogsDtos);
+                }
             }
             return app;
         }
@@ -204,7 +213,6 @@
                 })
                 .Wait();
         }
-
         private static async Task RegisterAdminUser(UserManager<User> userManager, string adminRoleName)
         {
             var adminEmail = Constants.AdminEmail;
@@ -240,10 +248,44 @@
                     {
                         var result = await userManager.CreateAsync(user, Constants.UserPassword);
                     }
+                    foreach (var user in users)
+                    {
+                        var result = await userManager.AddToRoleAsync(user, Constants.UserRole);
+                    }
                 })
                 .GetAwaiter()
                 .GetResult();
             }
+        }
+
+        private static void SeedTravelLog(Metro2036DbContext context, TravelLogDtoImp[] travelLogsDtos)
+        {
+            var validTravelLog = new List<TravelLog>();
+
+            foreach (var travelLogDto in travelLogsDtos)
+            {
+                var userId = context.Users
+                    .Where(u => u.UserName == travelLogDto.UserName)
+                    .Select(u => u.Id)
+                    .Single();
+                var stationId = travelLogDto.StationId;
+
+                //var travelLog = Mapper.Map<TravelLog>(travelLogDto);
+
+                var travelLog = new TravelLog
+                {
+                    UserId = userId,
+                    StationId = stationId
+                };
+
+
+                validTravelLog.Add(travelLog);
+
+                //TODO: Implement Import Logging
+            }
+
+            context.TravelLogs.AddRange(validTravelLog);
+            context.SaveChanges();
         }
     }
 }

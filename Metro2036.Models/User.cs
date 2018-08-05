@@ -12,6 +12,5 @@
         public string TravelCardId { get; set; }
 
         public ICollection<TravelLog> Travels { get; set; } = new List<TravelLog>();
-
     }
 }

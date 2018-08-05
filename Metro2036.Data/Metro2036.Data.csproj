@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180802120719_UserModel_TravelLog.cs" />
+    <Compile Remove="Migrations\20180802123903_Update_TravelLog.cs" />
+    <Compile Remove="Migrations\20180803111803_TravelLog_Update.cs" />
+    <Compile Remove="Migrations\20180803120144_TravelLog_Update_Again.cs" />
+    <Compile Remove="Migrations\20180803121041_TravelLog_Model_Add.cs" />
+    <Compile Remove="Migrations\20180805053115_TravelLog_Change.cs" />
+    <Compile Remove="Migrations\20180805091447_TravelLog_ChangeUserId.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />

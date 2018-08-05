@@ -1,0 +1,18 @@
+[
+  {
+    "UserName": "user01@metro2036.com",
+    "StationId": "10"
+  },
+  {
+    "UserName": "user02@metro2036.com",
+    "StationId": "09"
+  },
+  {
+    "UserName": "user02@metro2036.com",
+    "StationId": "08"
+  },
+  {
+    "UserName": "user01@metro2036.com",
+    "StationId": "07"
+  }
+]

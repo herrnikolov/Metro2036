@@ -20,6 +20,11 @@
 
             //Passenger
             CreateMap<UserDtoImp, User>();
+
+            //TravelLog
+            CreateMap<TravelLogDtoImp, TravelLog>();
+
+
         }
     }
 }

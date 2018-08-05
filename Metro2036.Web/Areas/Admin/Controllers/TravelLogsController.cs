@@ -23,7 +23,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // GET: Admin/TravelLogs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TravelLogs.ToListAsync());
+            var metro2036DbContext = _context.TravelLogs.Include(t => t.Station).Include(t => t.User);
+            return View(await metro2036DbContext.ToListAsync());
         }
 
         // GET: Admin/TravelLogs/Details/5
@@ -35,6 +36,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
             }
 
             var travelLog = await _context.TravelLogs
+                .Include(t => t.Station)
+                .Include(t => t.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (travelLog == null)
             {
@@ -47,6 +50,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // GET: Admin/TravelLogs/Create
         public IActionResult Create()
         {
+            ViewData["StationId"] = new SelectList(_context.Stations, "Id", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -55,7 +60,7 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TravelCardId,UserName,StationId,StationName")] TravelLog travelLog)
+        public async Task<IActionResult> Create([Bind("Id,UserId,StationId")] TravelLog travelLog)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +68,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StationId"] = new SelectList(_context.Stations, "Id", "Name", travelLog.StationId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", travelLog.UserId);
             return View(travelLog);
         }
 
@@ -79,6 +86,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["StationId"] = new SelectList(_context.Stations, "Id", "Name", travelLog.StationId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", travelLog.UserId);
             return View(travelLog);
         }
 
@@ -87,7 +96,7 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TravelCardId,UserName,StationId,StationName")] TravelLog travelLog)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,StationId")] TravelLog travelLog)
         {
             if (id != travelLog.Id)
             {
@@ -114,6 +123,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StationId"] = new SelectList(_context.Stations, "Id", "Name", travelLog.StationId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", travelLog.UserId);
             return View(travelLog);
         }
 
@@ -126,6 +137,8 @@ namespace Metro2036.Web.Areas.Admin.Controllers
             }
 
             var travelLog = await _context.TravelLogs
+                .Include(t => t.Station)
+                .Include(t => t.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (travelLog == null)
             {
