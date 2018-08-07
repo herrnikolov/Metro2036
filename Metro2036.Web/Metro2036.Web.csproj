@@ -69,7 +69,7 @@
     <Folder Include="Areas\User\Controllers\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
-    <Folder Include="Areas\User\Views\" />
+    <Folder Include="Areas\User\Views\Shared\DispalyTemplates\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,6 +94,13 @@
     <None Include="Areas\Admin\Views\TravelLogs\Details.cshtml" />
     <None Include="Areas\Admin\Views\TravelLogs\Edit.cshtml" />
     <None Include="Areas\Admin\Views\TravelLogs\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\User\Views\Shared\_Layout.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -26,13 +26,13 @@
                 var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
                 context.Database.Migrate();
-                
+
                 //TODO: Rework Seeds
 
                 //SeedStations
                 if (!context.Stations.Any())
                 {
-                    var deserializedStations = File.ReadAllText(@"wwwroot\seedfiles\metro_stations.json");
+                    var deserializedStations = File.ReadAllText(Constants.StationsListPath);
                     var stationDtos = JsonConvert.DeserializeObject<StationDtoImp[]>(deserializedStations);
 
                     SeedStations(context, stationDtos);
@@ -40,7 +40,7 @@
                 //SeedRoutes and Points
                 if (!context.Routes.Any())
                 {
-                    var deserializedRoutes = File.ReadAllText(@"wwwroot\seedfiles\routes.json");
+                    var deserializedRoutes = File.ReadAllText(Constants.RoutesListPath);
                     var routeDtos = JsonConvert.DeserializeObject<RouteDtoImp[]>(deserializedRoutes);
 
                     SeedRoutes(context, routeDtos);
@@ -48,26 +48,20 @@
                 //SeedTrains
                 if (!context.Trains.Any())
                 {
-                    var deserializedTrains = File.ReadAllText(@"wwwroot\seedfiles\trains.json");
+                    var deserializedTrains = File.ReadAllText(Constants.TrainsListPath);
                     var trainDtos = JsonConvert.DeserializeObject<TrainDtoImp[]>(deserializedTrains);
 
                     SeedTrains(context, trainDtos);
                 }
+
                 //Seed Users and Roles
                 SeedDefaultRoles(userManager, roleManager);
                 SeedUsers(context, userManager);
-                //if (!context.Passengers.Any())
-                //{
-                //    var deserializedPassengers = File.ReadAllText(@"wwwroot\seedfiles\passengers.json");
-                //    var passengerDtos = JsonConvert.DeserializeObject<Passenger[]>(deserializedPassengers);
-
-                //    SeedPassengers(context, passengerDtos);
-                //}
 
                 //SeedTravelLog
                 if (!context.TravelLogs.Any())
                 {
-                    var deserializedTravelLog = File.ReadAllText(@"wwwroot\seedfiles\travellog.json");
+                    var deserializedTravelLog = File.ReadAllText(Constants.TravelLogsListPath);
                     var travelLogsDtos = JsonConvert.DeserializeObject<TravelLogDtoImp[]>(deserializedTravelLog);
 
                     SeedTravelLog(context, travelLogsDtos);
@@ -240,21 +234,16 @@
                 var usersList = File
                 .ReadAllText(Constants.UsersListPath);
 
-                var users = JsonConvert.DeserializeObject<User[]>(usersList);
+                var deserializedUsers = JsonConvert.DeserializeObject<User[]>(usersList);
 
-                Task.Run(async () =>
+                foreach (var user in deserializedUsers)
                 {
-                    foreach (var user in users)
-                    {
-                        var result = await userManager.CreateAsync(user, Constants.UserPassword);
-                    }
-                    foreach (var user in users)
-                    {
-                        var result = await userManager.AddToRoleAsync(user, Constants.UserRole);
-                    }
-                })
-                .GetAwaiter()
-                .GetResult();
+                    var result = userManager.CreateAsync(user, Constants.UserPassword);
+                }
+                foreach (var user in deserializedUsers)
+                {
+                    var result = userManager.AddToRoleAsync(user, Constants.UserRole);
+                }
             }
         }
 

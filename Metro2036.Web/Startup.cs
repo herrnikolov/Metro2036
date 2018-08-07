@@ -50,7 +50,7 @@ namespace Metro2036.Web
 
             // Use SQL Database if in Azure, otherwise, use Local SQL
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                services.AddDbContext<Metro2036DbContext>(options =>
+                    services.AddDbContext<Metro2036DbContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
             else
                 services.AddDbContext<Metro2036DbContext>(options =>
