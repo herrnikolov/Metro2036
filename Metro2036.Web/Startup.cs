@@ -39,6 +39,7 @@ namespace Metro2036.Web
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //Dependency Injection Container!
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -116,6 +117,7 @@ namespace Metro2036.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
                 app.UseDatabaseErrorPage();
             }
             else
@@ -133,9 +135,16 @@ namespace Metro2036.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+<<<<<<< HEAD
                     name: "areaRoute",
                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+=======
+                         name: "areaRoute",
+                         template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                
+                // default route for non-areas
+>>>>>>> 5ae1f43cc8bb36d5647a1cecfbec5bfe99bd68db
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
