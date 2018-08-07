@@ -69,7 +69,7 @@
     <Folder Include="Areas\User\Controllers\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
-    <Folder Include="Areas\User\Views\Shared\DispalyTemplates\" />
+    <Folder Include="Areas\User\Views\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -97,8 +97,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\User\Views\Shared\_Layout.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    <Content Update="Areas\User\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

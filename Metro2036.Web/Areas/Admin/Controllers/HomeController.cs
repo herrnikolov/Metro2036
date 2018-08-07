@@ -2,11 +2,15 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using static Constants;
 
-    public class HomeController : BaseController
+    [Area(AdministratorArea)]
+    [Authorize(Roles = AdministratorRole)]
+    public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
