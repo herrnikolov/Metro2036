@@ -11,16 +11,19 @@
         public string Maker { get; set; }
 
         [Required]
-        public int OperationalSpeed { get; set; }
+        public int Speed { get; set; }
 
         [Required]
         public int Capacity { get; set; }
 
         [Required]
-        public DataType YearOfManufacturing { get; set; }
+        public DataType Year { get; set; }
 
         [Required]
         public string SerialNumber { get; set; }
+
+        [Url]
+        public string ImageUrl { get; set; }
 
         [Required]
         public int RouteId { get; set; }
