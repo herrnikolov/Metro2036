@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Metro2036.Web.Data.Migrations
 {
     [DbContext(typeof(Metro2036DbContext))]
-    [Migration("20180805111326_TravelLogWithSeedData")]
-    partial class TravelLogWithSeedData
+    [Migration("20180808132453_BaseLine")]
+    partial class BaseLine
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -127,17 +127,19 @@ namespace Metro2036.Web.Data.Migrations
 
                     b.Property<int>("Capacity");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Maker")
                         .IsRequired();
-
-                    b.Property<int>("OperationalSpeed");
 
                     b.Property<int>("RouteId");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired();
 
-                    b.Property<int>("YearOfManufacturing");
+                    b.Property<int>("Speed");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 

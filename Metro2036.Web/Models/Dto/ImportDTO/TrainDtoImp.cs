@@ -18,8 +18,11 @@
         [JsonProperty("Capacity")]
         public int Capacity { get; set; }
 
-        [JsonProperty("YearOfManufacturing")]
-        public DataType YearOfManufacturing { get; set; }
+        [JsonProperty("Year")]
+        public DataType Year { get; set; }
+
+        [JsonProperty("ImageUrl")]
+        public string ImageUrl { get; set; }
 
         [JsonProperty("SerialNumber")]
         public string SerialNumber { get; set; }

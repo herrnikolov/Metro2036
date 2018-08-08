@@ -12,6 +12,8 @@
     <Compile Remove="Migrations\20180803121041_TravelLog_Model_Add.cs" />
     <Compile Remove="Migrations\20180805053115_TravelLog_Change.cs" />
     <Compile Remove="Migrations\20180805091447_TravelLog_ChangeUserId.cs" />
+    <Compile Remove="Migrations\20180805111326_TravelLogWithSeedData.cs" />
+    <Compile Remove="Migrations\20180807140624_TrainModelImg.cs" />
   </ItemGroup>
 
   <ItemGroup>

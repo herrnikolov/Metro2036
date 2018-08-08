@@ -10,8 +10,8 @@
         public const string AdminPassword = "P@ssw0rd";
 
         //User Seeding
-        public const string UserArea = "Passenger";
-        public const string UserRole = "Passenger";
+        public const string UserArea = "User";
+        public const string UserRole = "User";
         public const string UserPassword = "P@ssw0rd";
 
         // Tables Seeding Paths

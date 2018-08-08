@@ -125,17 +125,19 @@ namespace Metro2036.Web.Data.Migrations
 
                     b.Property<int>("Capacity");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Maker")
                         .IsRequired();
-
-                    b.Property<int>("OperationalSpeed");
 
                     b.Property<int>("RouteId");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired();
 
-                    b.Property<int>("YearOfManufacturing");
+                    b.Property<int>("Speed");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 

@@ -29,6 +29,10 @@
 
                 //TODO: Rework Seeds
 
+                //Seed Users and Roles
+                SeedDefaultRoles(userManager, roleManager);
+                SeedUsers(context, userManager);
+
                 //SeedStations
                 if (!context.Stations.Any())
                 {
@@ -53,11 +57,6 @@
 
                     SeedTrains(context, trainDtos);
                 }
-
-                //Seed Users and Roles
-                SeedDefaultRoles(userManager, roleManager);
-                SeedUsers(context, userManager);
-
                 //SeedTravelLog
                 if (!context.TravelLogs.Any())
                 {
@@ -161,25 +160,6 @@
             context.SaveChanges();
         }
 
-        //private static void SeedPassengers(Metro2036DbContext context, UserDtoImp[] deserializedPassengers)
-        //{
-        //    var validPassengers = new List<User>();
-
-        //    foreach (var passengerDto in deserializedPassengers)
-        //    {
-        //        var passengerAlreadyExists = deserializedPassengers.Any(s => s.TravelId== passengerDto.TravelId);
-
-        //        var passenger = Mapper.Map<User>(passengerDto);
-
-        //        validPassengers.Add(passenger);
-
-        //        //TODO: Implement Import Logging
-        //    }
-
-        //    context.Passengers.AddRange(validPassengers);
-        //    context.SaveChanges();
-        //}
-
         private static void SeedDefaultRoles(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             Task
@@ -236,14 +216,19 @@
 
                 var deserializedUsers = JsonConvert.DeserializeObject<User[]>(usersList);
 
-                foreach (var user in deserializedUsers)
+                Task.Run(async () =>
                 {
-                    var result = userManager.CreateAsync(user, Constants.UserPassword);
-                }
-                foreach (var user in deserializedUsers)
-                {
-                    var result = userManager.AddToRoleAsync(user, Constants.UserRole);
-                }
+                    foreach (var user in deserializedUsers)
+                    {
+                        var result = await userManager.CreateAsync(user, Constants.UserPassword);
+                    }
+                    foreach (var user in deserializedUsers)
+                    {
+                        var result = await userManager.AddToRoleAsync(user, Constants.UserRole);
+                    }
+                })
+                .GetAwaiter()
+                .GetResult();
             }
         }
 
