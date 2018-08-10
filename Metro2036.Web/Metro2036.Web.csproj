@@ -63,6 +63,7 @@
     <ProjectReference Include="..\Metro2036.Data\Metro2036.Data.csproj" />
   </ItemGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DispalyTemplates\" />
@@ -101,4 +102,6 @@
     </Content>
   </ItemGroup>
 
+=======
+>>>>>>> 5ae1f43cc8bb36d5647a1cecfbec5bfe99bd68db
 </Project>

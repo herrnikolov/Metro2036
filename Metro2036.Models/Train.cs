@@ -11,6 +11,7 @@
         public string Maker { get; set; }
 
         [Required]
+
         public int Speed { get; set; }
 
         [Required]
@@ -24,6 +25,9 @@
 
         [Required]
         public string SerialNumber { get; set; }
+
+        [Url]
+        public string ImageUrl { get; set; }
 
         [Required]
         public int RouteId { get; set; }
