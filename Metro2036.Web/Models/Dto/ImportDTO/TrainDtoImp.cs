@@ -12,8 +12,8 @@
         [JsonProperty("Maker")]
         public string Maker { get; set; }
 
-        [JsonProperty("OperationalSpeed")]
-        public int OperationalSpeed { get; set; }
+        [JsonProperty("Speed")]
+        public int Speed { get; set; }
 
         [JsonProperty("Capacity")]
         public int Capacity { get; set; }

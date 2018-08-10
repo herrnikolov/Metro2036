@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PointsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoutesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrainsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TravelLogsController.cs" />
     <Compile Include="Areas\Admin\Models\Point\PointCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Point\PointDetailsViewModel.cs" />
@@ -27,6 +27,7 @@
     <Compile Include="Areas\Admin\Models\Route\RouteDetailsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Station\StationCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Station\StationDetailsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Train\TrainConciseViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Train\TrainCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Train\TrainDetailsViewModel.cs" />
   </ItemGroup>
@@ -66,14 +67,14 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DispalyTemplates\" />
-    <Folder Include="Areas\User\Controllers\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
-    <Folder Include="Areas\User\Views\" />
+    <Folder Include="Areas\User\Pages\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Home\Test.cshtml" />
     <None Include="Areas\Admin\Views\Routes\Create.cshtml" />
     <None Include="Areas\Admin\Views\Routes\Delete.cshtml" />
     <None Include="Areas\Admin\Views\Routes\Details.cshtml" />
@@ -84,6 +85,11 @@
     <None Include="Areas\Admin\Views\Stations\Details.cshtml" />
     <None Include="Areas\Admin\Views\Stations\Edit.cshtml" />
     <None Include="Areas\Admin\Views\Stations\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Trains\Index.cshtml" />
     <None Include="Areas\Admin\Views\TravelLogs\Create.cshtml" />
     <None Include="Areas\Admin\Views\TravelLogs\Delete.cshtml" />
     <None Include="Areas\Admin\Views\TravelLogs\Details.cshtml" />

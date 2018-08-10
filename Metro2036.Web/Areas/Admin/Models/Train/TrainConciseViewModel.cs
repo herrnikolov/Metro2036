@@ -1,35 +1,26 @@
-﻿namespace Metro2036.Models
+﻿namespace Metro2036.Web.Areas.Admin.Models.Train
 {
+    using Metro2036.Models;
     using System.ComponentModel.DataAnnotations;
-
-    public class Train
+    public class TrainConciseViewModel
     {
-        [Key]
         public int Id { get; set; }
 
-        [Required]
         public string Maker { get; set; }
 
-        [Required]
         public int Speed { get; set; }
 
-        [Required]
         public int Capacity { get; set; }
 
-        [Required]
         public DataType Year { get; set; }
 
         [Url]
         public string ImageUrl { get; set; }
 
-        [Required]
         public string SerialNumber { get; set; }
 
-        [Required]
         public int RouteId { get; set; }
 
-        [Required]
         public Route Route { get; set; }
-
     }
 }
