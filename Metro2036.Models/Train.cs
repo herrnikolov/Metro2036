@@ -26,9 +26,6 @@
         [Required]
         public string SerialNumber { get; set; }
 
-        [Url]
-        public string ImageUrl { get; set; }
-
         [Required]
         public int RouteId { get; set; }
 
