@@ -32,11 +32,6 @@ namespace Metro2036.Tests
 
             var route = context.Routes.ToList();
 
-<<<<<<< .mine
-
-=======
-
->>>>>>> .theirs
             //--Act
 
             //--Assert

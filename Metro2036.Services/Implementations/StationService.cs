@@ -31,12 +31,10 @@ namespace Metro2036.Services.Implementations
         {
             return _context.Stations.FirstOrDefault(s => s.Id == id);
         }
-
-        public IEquatable<Station> GetAll()
+        IEnumerable<Station> IStationService.GetAll()
         {
             return _context.Stations.OrderBy(s => s.Name);
         }
-
         public Station Update(Station station)
         {
             _context.Attach(station).State =
