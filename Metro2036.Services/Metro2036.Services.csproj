@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Metro2036.Data\Metro2036.Data.csproj" />
+    <ProjectReference Include="..\Metro2036.Models\Metro2036.Models.csproj" />
+  </ItemGroup>
+
+</Project>
