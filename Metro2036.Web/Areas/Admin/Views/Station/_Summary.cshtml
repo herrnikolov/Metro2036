@@ -1,0 +1,25 @@
+﻿@model Station
+
+<section>
+    <h3>@Model.Name</h3>
+    <div>
+        StantionId: @Model.StantionId
+    </div>
+    <div>
+        RouteId: @Model.RouteId
+    </div>
+    <div>
+        Code: @Model.Code
+    </div>
+    <div>
+        Latitude: @Model.Latitude
+    </div>
+    <div>
+        Longitude: @Model.Longitude
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>  
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">More</a>  
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    </div>
+</section>

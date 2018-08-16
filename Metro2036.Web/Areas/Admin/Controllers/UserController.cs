@@ -2,13 +2,9 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System;
     using System.Linq;
-    using System.Threading.Tasks;
     using Metro2036.Models;
-    using static Constants;
-    using Metro2036.Web.Areas.Admin.Models.User;
-    using System.Collections.Generic;
+    using Metro2036.Services.Models;
 
     public class UserController : BaseController
     {

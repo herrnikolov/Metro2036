@@ -1,0 +1,16 @@
+﻿@model Metro2036.Services.Models.Station.StationIndexViewModel
+
+@{
+    ViewBag.Title = "Stations";
+}
+
+<h1>Stations</h1>
+
+@foreach (var station in Model.Stations)
+{
+    <partial name="_Summary" model="station" />
+}
+
+<div>
+    <a asp-action="Creat">Add Station</a>
+</div>

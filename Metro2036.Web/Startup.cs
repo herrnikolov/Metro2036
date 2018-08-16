@@ -28,6 +28,8 @@ namespace Metro2036.Web
     using AutoMapper;
     using System;
     using Metro2036.Models;
+    using Metro2036.Services.Implementations;
+    using Metro2036.Services.Interfaces;
 
     public class Startup
     {
@@ -94,6 +96,10 @@ namespace Metro2036.Web
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //StationService
+            services.AddScoped<IStationService, StationService>();
+
 
             //TODO: Move Default to /Home?
             //services

@@ -33,7 +33,7 @@ namespace Metro2036.Services.Implementations
         }
         IEnumerable<Station> IStationService.GetAll()
         {
-            return _context.Stations.OrderBy(s => s.Name);
+            return _context.Stations.OrderBy(s => s.StantionId);
         }
         public Station Update(Station station)
         {

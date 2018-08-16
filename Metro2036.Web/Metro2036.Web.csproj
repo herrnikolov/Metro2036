@@ -15,10 +15,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Metro2036.Data\Metro2036.Data.csproj" />
+    <ProjectReference Include="..\Metro2036.Services\Metro2036.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
