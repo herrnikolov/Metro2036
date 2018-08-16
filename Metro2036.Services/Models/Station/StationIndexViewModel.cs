@@ -1,4 +1,6 @@
-﻿namespace Metro2036.Services.Models.Station
+﻿using System.Collections;
+
+namespace Metro2036.Services.Models.Station
 {
     using System.Collections.Generic;
     using Metro2036.Models;

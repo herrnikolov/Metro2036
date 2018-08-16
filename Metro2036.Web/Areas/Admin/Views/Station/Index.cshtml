@@ -6,11 +6,67 @@
 
 <h1>Stations</h1>
 
-@foreach (var station in Model.Stations)
-{
-    <partial name="_Summary" model="station" />
-}
-
+@*@foreach (var station in Model.Stations)
+    {
+        <partial name="_Summary" model="station" />
+    }*@
 <div>
-    <a asp-action="Creat">Add Station</a>
+    <a asp-action="Create">Add Station</a>
 </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("StantionId")
+            </th>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+                @Html.DisplayName("Code")
+            </th>
+            <th>
+                @Html.DisplayName("PointId")
+            </th>
+
+            <th>
+                @Html.DisplayName("Latitude")
+            </th>
+            <th>
+                @Html.DisplayName("Longitude")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var station in Model.Stations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => station.StantionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => station.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => station.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => station.PointId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => station.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => station.Longitude)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@station.Id" class="btn btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@station.Id" class="btn btn-primary">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@station.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
