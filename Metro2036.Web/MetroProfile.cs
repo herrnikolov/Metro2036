@@ -3,6 +3,7 @@
     using AutoMapper;
     using Metro2036.Web.Models.DTO.ImportDTO;
     using Metro2036.Models;
+    using Metro2036.Services.Models.Station;
 
     public class MetroProfile : Profile
     {
@@ -23,6 +24,14 @@
 
             //TravelLog
             CreateMap<TravelLogDtoImp, TravelLog>();
+
+            //ViewStation
+            CreateMap<StationDetailsViewModel, Station>();
+            //BindStation
+            CreateMap<StationEditBindModel, Station>();
+            //DeleteStation
+            CreateMap<StationDeleteViewModel, Station>();
+
 
 
         }

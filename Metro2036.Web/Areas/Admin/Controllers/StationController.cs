@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Metro2036.Services.Interfaces;
-using Metro2036.Services.Models.Station;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Metro2036.Web.Areas.Admin.Controllers
+﻿namespace Metro2036.Web.Areas.Admin.Controllers
 {
+    using AutoMapper;
+    using Metro2036.Models;
+    using Metro2036.Services.Interfaces;
+    using Metro2036.Services.Models.Station;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
     public class StationController : BaseController
     {
         private IStationService _stationService;
@@ -29,7 +26,16 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // GET: Station/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var station = _stationService.Get(id);
+
+            var model = Mapper.Map<StationDetailsViewModel>(station);
+
+
+            //if (model.Id == null)
+            //{
+            //    return RedirectToAction(nameof(Index));
+            //}
+            return View(model);
         }
 
         // GET: Station/Create
@@ -58,47 +64,54 @@ namespace Metro2036.Web.Areas.Admin.Controllers
         // GET: Station/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var station = _stationService.Get(id);
+
+            var model = Mapper.Map<StationEditBindModel>(station);
+
+
+            //if (model.Id == null)
+            //{
+            //    return RedirectToAction(nameof(Index));
+            //}
+            return View(model);
         }
 
         // POST: Station/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, StationEditBindModel station)
         {
-            try
-            {
-                // TODO: Add update logic here
+            var model = Mapper.Map<Station>(station);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                _stationService.Update(model);
+                return RedirectToAction("Details", "Station", new { id = model.Id });
             }
-        }
-
-        // GET: Station/Delete/5
-        public ActionResult Delete(int id)
-        {
             return View();
         }
 
-        // POST: Station/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        // GET: Station/Delete/5
+        [HttpGet]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var station = _stationService.Get(id);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var model = Mapper.Map<StationDeleteViewModel>(station);
+
+            return View(model);
+        }
+
+        // POST: Station/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(StationDeleteViewModel station)
+        {
+            var model = Mapper.Map<Station>(station);
+
+            _stationService.Delete(model);
+            return RedirectToAction("Index", "Station");
+
         }
     }
 }

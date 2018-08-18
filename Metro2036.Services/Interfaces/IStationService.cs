@@ -13,5 +13,7 @@
         Station Add(Station station);
 
         Station Update(Station station);
+
+        Station Delete(Station station);
     }
 }

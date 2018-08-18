@@ -1,6 +1,6 @@
 ﻿namespace Metro2036.Services.Models.Station
 {
-    public class StationDetailsViewModel
+    public class StationDeleteViewModel
     {
         public int Id { get; set; }
 

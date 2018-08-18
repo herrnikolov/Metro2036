@@ -90,18 +90,16 @@ namespace Metro2036.Web
             //Enforce lowercase routing
             //services.AddRouting(options => options.LowercaseUrls = true);
 
+            ConfigureMetro2036Services(services);
+
             //AutoMapper
             Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
             services.AddAutoMapper(typeof(Startup));
 
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            //StationService
-            services.AddScoped<IStationService, StationService>();
-
-
-            //TODO: Move Default to /Home?
+            
             //services
             //    .AddMvc(options =>
             //    {
@@ -114,6 +112,13 @@ namespace Metro2036.Web
             //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        }
+
+        private static void ConfigureMetro2036Services(IServiceCollection services)
+        {
+            //StationService
+            services.AddScoped<IStationService, StationService>();
+            //services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -148,7 +153,7 @@ namespace Metro2036.Web
             });
             //app.UseMvcWithDefaultRoute();
 
-            //TODO: Seed Database!
+            //Seed Database!
             app.SeedDatabase();
         }
     }

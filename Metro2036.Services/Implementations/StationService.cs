@@ -20,6 +20,7 @@ namespace Metro2036.Services.Implementations
             _context = context;
         }
 
+        //ADD
         public Station Add(Station station)
         {
             _context.Stations.Add(station);
@@ -27,18 +28,32 @@ namespace Metro2036.Services.Implementations
             return station;
         }
 
+        //Get by ID | Details
         public Station Get(int id)
         {
             return _context.Stations.FirstOrDefault(s => s.Id == id);
         }
+
+        //Get ALL | Index
         IEnumerable<Station> IStationService.GetAll()
         {
             return _context.Stations.OrderBy(s => s.StantionId);
         }
+
+        //Update | Edit
         public Station Update(Station station)
         {
-            _context.Attach(station).State =
-                EntityState.Modified;
+            //_context.Stations.Attach(station).State =
+            //    EntityState.Modified;
+            _context.Stations.Update(station);
+            _context.SaveChanges();
+            return station;
+        }
+
+        //Remove | Delete
+        public Station Delete(Station station)
+        {
+            _context.Stations.Remove(station);
             _context.SaveChanges();
             return station;
         }
