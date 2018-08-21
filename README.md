@@ -46,7 +46,18 @@ OK - Use MVC Areas - Admin, User Areas
 Bonuses
 * Host the application in a cloud environment, e.g. in AppHarbor or Azure
 ---------------------------------------------------------------------------------------------------------
-
+Assessment Criteria
+•	Functionality – 0…20
+•	Implementing controllers correctly (controllers should do only their work) – 0...5
+•	Implementing views correctly (using display and editor templates) – 0…5
+•	Unit tests (unit test for some of the controllers using mocking) – 0…10
+•	Security (prevent SQL injection, XSS, CSRF, parameter tampering, etc.) – 0…5
+•	Data validation (validation in the models and input models) – 0…10
+•	Using auto mapper and inversion of control – 0…5
+•	Using areas with multiple layouts – 0…10
+•	Code quality (well-structured code, following the MVC pattern, following SOLID principles, etc.) – 0…10
+•	Bonus (bonus points are given for exceptional project) – 0…25
+--------------------------------------------------------------------------------------------------------
 ToDo:
 
 Home Page - Add some content
@@ -74,16 +85,4 @@ User Area:
 	Home Paage 
 
 
---------------------------------------------------------------------------------------------------------
-Assessment Criteria
-•	Functionality – 0…20
-•	Implementing controllers correctly (controllers should do only their work) – 0...5
-•	Implementing views correctly (using display and editor templates) – 0…5
-•	Unit tests (unit test for some of the controllers using mocking) – 0…10
-•	Security (prevent SQL injection, XSS, CSRF, parameter tampering, etc.) – 0…5
-•	Data validation (validation in the models and input models) – 0…10
-•	Using auto mapper and inversion of control – 0…5
-•	Using areas with multiple layouts – 0…10
-•	Code quality (well-structured code, following the MVC pattern, following SOLID principles, etc.) – 0…10
-•	Bonus (bonus points are given for exceptional project) – 0…25
 --------------------------------------------------------------------------------------------------------
