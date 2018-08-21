@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Metro2036.Data\Metro2036.Data.csproj" />
     <ProjectReference Include="..\Metro2036.Models\Metro2036.Models.csproj" />
   </ItemGroup>

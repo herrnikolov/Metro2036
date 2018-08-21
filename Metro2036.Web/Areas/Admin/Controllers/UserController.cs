@@ -4,62 +4,41 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using Metro2036.Models;
-    using Metro2036.Web.Areas.Admin.Models.User;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Metro2036.Services.Interfaces;
-    using AutoMapper;
+    using Metro2036.Services.Models;
 
     public class UserController : BaseController
     {
-        private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IUserService _userService;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<User> userManager;
+        //private readonly IUserService userService;
 
         public UserController(
-            UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager,
-            IUserService userService)
+            UserManager<User> userManager)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _userService = userService;
+            this.roleManager = roleManager;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            var currentUser = _userManager.GetUserAsync(this.User);
+            var allUsers = this.userManager.Users.ToList();
+                        
+            var allRoles = this.roleManager.Roles.Select(r => r.Name).ToList();
 
-            //TODO: Admin Can't Edit Themselves
-            var allUsers = _userManager
-                .Users
-                .OrderBy(u => u.UserName);
+            //foreach (var userModel in allUsers)
+            //{
+            //    var dbUser = await this.userManager.FindByEmailAsync(userModel.Email);
+            //    var userRoles = await this.userManager.GetRolesAsync(dbUser);
+            //}
 
-            //var model = IAutoMapper.Map<IEnumerable<UserListingServiceModel>>(allUsers);
+            //var model = new UserListingViewModel
+            //{
+            //    Users = new List<UserListingViewModel>(allUsers)
+            //};
 
-            var model = Mapper.Map<UserListingServiceModel>(allUsers);
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteUser(string Id)
-        {
-            var user = await _userManager.FindByIdAsync(Id);
-
-            if (user != null)
-            {
-                IdentityResult result = await _userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                    return RedirectToAction("Index");
-                else
-                    ModelState.AddModelError("", "Something went wrong while deleting this user.");
-            }
-            else
-            {
-                ModelState.AddModelError("", "This user can't be found");
-            }
-            return View("Index", _userManager.Users);
+            //return View(model);
+            return View();
         }
 
     }

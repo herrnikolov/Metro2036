@@ -4,7 +4,6 @@
     using Metro2036.Web.Models.DTO.ImportDTO;
     using Metro2036.Models;
     using Metro2036.Services.Models.Station;
-    using Metro2036.Web.Areas.Admin.Models.User;
 
     public class MetroProfile : Profile
     {
@@ -22,9 +21,6 @@
 
             //Passenger
             CreateMap<UserDtoImp, User>();
-
-            //Users
-            CreateMap<UserListingServiceModel, User>();
 
             //TravelLog
             CreateMap<TravelLogDtoImp, TravelLog>();
