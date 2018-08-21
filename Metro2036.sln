@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Web", "Metro2036.Web\Metro2036.Web.csproj", "{84EED98D-EB0F-4596-ABDC-319BCB506D1E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Data", "Metro2036.Data\Metro2036.Data.csproj", "{DCAB5A3C-EB1B-4A72-A16A-F3BF9D0AC078}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Models", "Metro2036.Models\Metro2036.Models.csproj", "{FEFB81BF-97C5-4287-AE42-4B5E806F69C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Tests", "Metro2036.Tests\Metro2036.Tests.csproj", "{E0ADF2D7-AB35-4DB0-BF01-9490AAD0923A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metro2036.Services", "Metro2036.Services\Metro2036.Services.csproj", "{3BD3DB13-A934-4698-AE93-78726890D135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Services", "Metro2036.Services\Metro2036.Services.csproj", "{3BD3DB13-A934-4698-AE93-78726890D135}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Data", "Metro2036.Data\Metro2036.Data.csproj", "{C74BF3A6-317A-464E-8101-FA7A9D1B4D47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Web", "Metro2036.Web\Metro2036.Web.csproj", "{671579A9-5FAC-474B-A5F4-63EB6855FCD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{84EED98D-EB0F-4596-ABDC-319BCB506D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84EED98D-EB0F-4596-ABDC-319BCB506D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84EED98D-EB0F-4596-ABDC-319BCB506D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84EED98D-EB0F-4596-ABDC-319BCB506D1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCAB5A3C-EB1B-4A72-A16A-F3BF9D0AC078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCAB5A3C-EB1B-4A72-A16A-F3BF9D0AC078}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCAB5A3C-EB1B-4A72-A16A-F3BF9D0AC078}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCAB5A3C-EB1B-4A72-A16A-F3BF9D0AC078}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FEFB81BF-97C5-4287-AE42-4B5E806F69C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEFB81BF-97C5-4287-AE42-4B5E806F69C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFB81BF-97C5-4287-AE42-4B5E806F69C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +31,14 @@ Global
 		{3BD3DB13-A934-4698-AE93-78726890D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BD3DB13-A934-4698-AE93-78726890D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BD3DB13-A934-4698-AE93-78726890D135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C74BF3A6-317A-464E-8101-FA7A9D1B4D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74BF3A6-317A-464E-8101-FA7A9D1B4D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74BF3A6-317A-464E-8101-FA7A9D1B4D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74BF3A6-317A-464E-8101-FA7A9D1B4D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{671579A9-5FAC-474B-A5F4-63EB6855FCD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671579A9-5FAC-474B-A5F4-63EB6855FCD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671579A9-5FAC-474B-A5F4-63EB6855FCD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671579A9-5FAC-474B-A5F4-63EB6855FCD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

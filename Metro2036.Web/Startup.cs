@@ -1,35 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Metro2036.Web.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Metro2036.Web
+﻿namespace Metro2036.Web
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.HttpsPolicy;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Metro2036.Data;
-    using Metro2036.Web.Infrastructure.Extensions;
+    using Microsoft.AspNetCore.Identity;
     using AutoMapper;
     using System;
+    using Metro2036.Data;
     using Metro2036.Models;
-    using Metro2036.Services.Implementations;
-    using Metro2036.Services.Interfaces;
+    using Metro2036.Web.Infrastructure.Extensions;
+    using Metro2036.Services.Admin.Implementations;
+    using Metro2036.Services.Admin.Interfaces;
+    
 
     public class Startup
     {
@@ -76,8 +62,8 @@ namespace Metro2036.Web
                     RequiredLength = 4,
                     RequiredUniqueChars = 1,
                     RequireLowercase = false,
-                    RequireDigit = false,
                     RequireUppercase = false,
+                    RequireDigit = false,
                     RequireNonAlphanumeric = false
                 };
 
@@ -93,13 +79,16 @@ namespace Metro2036.Web
             ConfigureMetro2036Services(services);
 
             //AutoMapper
-            Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
-            services.AddAutoMapper(typeof(Startup));
+            //Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
+            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper();
 
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+
+
+
             //services
             //    .AddMvc(options =>
             //    {
@@ -118,8 +107,10 @@ namespace Metro2036.Web
         {
             //StationService
             services.AddScoped<IStationService, StationService>();
-            //services.AddAutoMapper();
+            //User Service
+            services.AddScoped<IUserService, UserService>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
