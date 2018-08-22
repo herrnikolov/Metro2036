@@ -5,40 +5,33 @@
     using System.Linq;
     using Metro2036.Models;
     using Metro2036.Services.Models;
+    using Metro2036.Services.Interfaces;
 
     public class UserController : BaseController
     {
-        private readonly RoleManager<IdentityRole> roleManager;
-        private readonly UserManager<User> userManager;
-        //private readonly IUserService userService;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
 
         public UserController(
             RoleManager<IdentityRole> roleManager,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            IUserService userService)
         {
-            this.roleManager = roleManager;
-            this.userManager = userManager;
+            _roleManager = roleManager;
+            _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult Index()
         {
-            var allUsers = this.userManager.Users.ToList();
-                        
-            var allRoles = this.roleManager.Roles.Select(r => r.Name).ToList();
+            //var allUsers = userService.GetAll();
 
-            //foreach (var userModel in allUsers)
-            //{
-            //    var dbUser = await this.userManager.FindByEmailAsync(userModel.Email);
-            //    var userRoles = await this.userManager.GetRolesAsync(dbUser);
-            //}
+            //var users = userManager.GetUsersInRoleAsync("User");
 
-            //var model = new UserListingViewModel
-            //{
-            //    Users = new List<UserListingViewModel>(allUsers)
-            //};
+            var result = _userService.GetAll();
 
-            //return View(model);
-            return View();
+            return View(result);
         }
 
     }

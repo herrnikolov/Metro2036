@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Metro2036.Web.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Metro2036.Web
+﻿namespace Metro2036.Web
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -30,6 +15,7 @@ namespace Metro2036.Web
     using Metro2036.Models;
     using Metro2036.Services.Implementations;
     using Metro2036.Services.Interfaces;
+    using Microsoft.AspNetCore.Identity;
 
     public class Startup
     {
@@ -118,7 +104,10 @@ namespace Metro2036.Web
         {
             //StationService
             services.AddScoped<IStationService, StationService>();
+            //UserService
+            services.AddScoped<IUserService, UserService>();
             //services.AddAutoMapper();
+            //Dependency Injection Section
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

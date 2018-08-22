@@ -1,4 +1,4 @@
-﻿namespace Metro2036.Web.Areas.Admin.Models.User
+﻿namespace Metro2036.Services.Models.User
 {
     public class UserListingServiceModel
     {

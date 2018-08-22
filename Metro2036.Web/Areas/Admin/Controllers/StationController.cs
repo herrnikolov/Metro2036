@@ -22,7 +22,7 @@
             return View(model);
         }
 
-        // GET: Station/Details/5
+        // GET: Station/Details/id
         public ActionResult Details(int id)
         {
             var station = _stationService.Get(id);
@@ -60,7 +60,7 @@
             }
         }
 
-        // GET: Station/Edit/5
+        // GET: Station/Edit/id
         public ActionResult Edit(int id)
         {
             var station = _stationService.Get(id);
@@ -75,7 +75,7 @@
             return View(model);
         }
 
-        // POST: Station/Edit/5
+        // POST: Station/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, StationEditBindModel station)
@@ -90,7 +90,7 @@
             return View();
         }
 
-        // GET: Station/Delete/5
+        // GET: Station/Delete/id
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -101,7 +101,7 @@
             return View(model);
         }
 
-        // POST: Station/Delete/5
+        // POST: Station/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(StationDeleteViewModel station)

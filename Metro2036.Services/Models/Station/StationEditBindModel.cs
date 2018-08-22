@@ -4,7 +4,6 @@
     using System.ComponentModel.DataAnnotations;
     public class StationEditBindModel
     {
-        //[BindNever]
         [Required]
         public int Id { get; set; }
 
