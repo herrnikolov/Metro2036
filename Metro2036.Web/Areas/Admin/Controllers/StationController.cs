@@ -18,8 +18,7 @@
         // GET: Station
         public ActionResult Index()
         {
-            var model = new StationIndexViewModel();
-            model.Stations = _stationService.GetAll();
+            var model = new StationIndexViewModel {Stations = _stationService.GetAll()};
             return View(model);
         }
 
