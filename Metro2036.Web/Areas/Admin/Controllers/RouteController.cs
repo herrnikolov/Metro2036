@@ -6,10 +6,11 @@
     using Metro2036.Services.Models.Route;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
     public class RouteController : BaseController
     {
-         private IRouteService _routeService;
+        private IRouteService _routeService;
 
         public RouteController(IRouteService routeService)
         {
@@ -17,10 +18,17 @@
         }
 
         // GET: Index
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var model = new {Stations = _routeService.GetAll()};
+        //    return View(model);
+        //}
+        public async Task<IActionResult> Index()
         {
-            var model = new {Stations = _routeService.GetAll()};
-            return View(model);
+            var station = await this._routeService
+                .GetAll<RouteListingServiceModel>();
+
+            return this.View(station);
         }
 
         // GET: /Details/id
@@ -28,7 +36,7 @@
         {
             var route = _routeService.Get(id);
 
-            var model = Mapper.Map<RouteIndexViewModel>(route);
+            var model = Mapper.Map<RouteListingViewModel>(route);
 
             return View(model);
         }
@@ -59,7 +67,7 @@
         {
             var route = _routeService.Get(id);
 
-            var model = Mapper.Map<RouteIndexViewModel>(route);
+            var model = Mapper.Map<RouteListingViewModel>(route);
 
             return View(model);
         }
@@ -67,7 +75,7 @@
         // POST: /Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RouteIndexViewModel route)
+        public ActionResult Edit(int id, RouteListingViewModel route)
         {
             var model = Mapper.Map<Route>(route);
 
@@ -85,7 +93,7 @@
         {
             var route = _routeService.Get(id);
 
-            var model = Mapper.Map<RouteIndexViewModel>(route);
+            var model = Mapper.Map<RouteListingViewModel>(route);
 
             return View(model);
         }
@@ -93,7 +101,7 @@
         // POST: /Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(RouteIndexViewModel route)
+        public ActionResult Delete(RouteListingViewModel route)
         {
             var model = Mapper.Map<Route>(route);
 

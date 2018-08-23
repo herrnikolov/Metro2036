@@ -1,10 +1,13 @@
 ﻿namespace Metro2036.Services.Implementations
 {
+    using AutoMapper.QueryableExtensions;
     using Metro2036.Data;
     using Metro2036.Models;
     using Metro2036.Services.Interfaces;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class RouteService : BaseService, IRouteService
     {
@@ -16,10 +19,21 @@
         }
 
         //Get ALL | Index
-        public IEnumerable<Route> GetAll()
-        {
-            return _context.Routes.OrderBy(r => r.RouteId);
-        }
+        //public IEnumerable<Route> GetAll()
+        //{
+        //    //return _context.Routes.OrderBy(r => r.RouteId);
+        //    var route = this._context.
+        //        Routes
+        //        .OrderByDescending(r => r.Id)
+        //        .ToList();
+        //    return route;
+
+        //}
+        public async Task<IEnumerable<TModel>> GetAll<TModel>() where TModel : class
+            => await this._context.Routes
+            .OrderBy(r => r.Id)
+            .ProjectTo<TModel>()
+            .ToListAsync();
 
         //Get by ID | Details
         public Route Get(int id)
