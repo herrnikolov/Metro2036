@@ -3,37 +3,33 @@
     using AutoMapper;
     using Metro2036.Models;
     using Metro2036.Services.Interfaces;
-    using Metro2036.Services.Models.Station;
+    using Metro2036.Services.Models.Route;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    public class StationController : BaseController
-    {
-        private IStationService _stationService;
 
-        public StationController(IStationService stationService)
+    public class RouteController : BaseController
+    {
+         private IRouteService _routeService;
+
+        public RouteController(IRouteService routeService)
         {
-            _stationService = stationService;
+            _routeService = routeService;
         }
 
         // GET: Index
         public ActionResult Index()
         {
-            var model = new StationIndexViewModel {Stations = _stationService.GetAll()};
+            var model = new {Stations = _routeService.GetAll()};
             return View(model);
         }
 
         // GET: /Details/id
         public ActionResult Details(int id)
         {
-            var station = _stationService.Get(id);
+            var route = _routeService.Get(id);
 
-            var model = Mapper.Map<StationDetailsViewModel>(station);
+            var model = Mapper.Map<RouteIndexViewModel>(route);
 
-
-            //if (model.Id == null)
-            //{
-            //    return RedirectToAction(nameof(Index));
-            //}
             return View(model);
         }
 
@@ -50,8 +46,6 @@
         {
             try
             {
-                // TODO: Add insert logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -63,29 +57,24 @@
         // GET: /Edit/id
         public ActionResult Edit(int id)
         {
-            var station = _stationService.Get(id);
+            var route = _routeService.Get(id);
 
-            var model = Mapper.Map<StationEditBindModel>(station);
+            var model = Mapper.Map<RouteIndexViewModel>(route);
 
-
-            //if (model.Id == null)
-            //{
-            //    return RedirectToAction(nameof(Index));
-            //}
             return View(model);
         }
 
         // POST: /Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, StationEditBindModel station)
+        public ActionResult Edit(int id, RouteIndexViewModel route)
         {
-            var model = Mapper.Map<Station>(station);
+            var model = Mapper.Map<Route>(route);
 
             if (ModelState.IsValid)
             {
-                _stationService.Update(model);
-                return RedirectToAction("Details", "Station", new { id = model.Id });
+                _routeService.Update(model);
+                return RedirectToAction("Details", "Route", new { id = model.Id });
             }
             return View();
         }
@@ -94,9 +83,9 @@
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var station = _stationService.Get(id);
+            var route = _routeService.Get(id);
 
-            var model = Mapper.Map<StationDeleteViewModel>(station);
+            var model = Mapper.Map<RouteIndexViewModel>(route);
 
             return View(model);
         }
@@ -104,11 +93,11 @@
         // POST: /Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(StationDeleteViewModel station)
+        public ActionResult Delete(RouteIndexViewModel route)
         {
-            var model = Mapper.Map<Station>(station);
+            var model = Mapper.Map<Route>(route);
 
-            _stationService.Delete(model);
+            _routeService.Delete(model);
             return RedirectToAction("Index", "Station");
 
         }

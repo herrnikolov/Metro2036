@@ -1,6 +1,6 @@
 ﻿namespace Metro2036.Web
 {
-    public class Constants
+    public class WebConstants
     {
         //Admin User Seeding
         public const string AdministratorArea = "Admin";

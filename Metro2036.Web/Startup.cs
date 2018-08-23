@@ -1,17 +1,16 @@
 ﻿namespace Metro2036.Web
 {
+    using System;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.HttpsPolicy;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using AutoMapper;
     using Metro2036.Data;
     using Metro2036.Web.Infrastructure.Extensions;
-    using AutoMapper;
-    using System;
     using Metro2036.Models;
     using Metro2036.Services.Implementations;
     using Metro2036.Services.Interfaces;
@@ -44,11 +43,7 @@
                 services.AddDbContext<Metro2036DbContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Data")));
 
-            //NO
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<Metro2036DbContext>();
-
-            // From Lections
+            // From Identity Configuration
             services
                 .AddIdentity<User, IdentityRole>()
                 .AddDefaultUI()
@@ -76,12 +71,20 @@
             //Enforce lowercase routing
             //services.AddRouting(options => options.LowercaseUrls = true);
 
+            //Application Services Dependency Injection
             ConfigureMetro2036Services(services);
 
             //AutoMapper
             Mapper.Initialize(cfg => cfg.AddProfile<MetroProfile>());
             services.AddAutoMapper(typeof(Startup));
 
+            // Auto Mapper to be
+            //services.AddAutoMapper();
+
+            //services.AddMvc(options =>
+            //{
+            //    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            //});
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -98,16 +101,23 @@
             //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Prevent CSRF in ASP.NET Core
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         private static void ConfigureMetro2036Services(IServiceCollection services)
         {
+            //Dependency Injection Section
             //StationService
             services.AddScoped<IStationService, StationService>();
+            //RouteService
+            services.AddScoped<IRouteService, RouteService>();
             //UserService
             services.AddScoped<IUserService, UserService>();
-            //services.AddAutoMapper();
-            //Dependency Injection Section
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

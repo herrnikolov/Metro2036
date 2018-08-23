@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
-    using static Constants;
+    using static WebConstants;
 
     [Area(UserArea)]
     [Authorize(Roles = "User, Admin")]

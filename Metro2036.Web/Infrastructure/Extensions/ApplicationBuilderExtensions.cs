@@ -36,7 +36,7 @@
                 //SeedStations
                 if (!context.Stations.Any())
                 {
-                    var deserializedStations = File.ReadAllText(Constants.StationsListPath);
+                    var deserializedStations = File.ReadAllText(WebConstants.StationsListPath);
                     var stationDtos = JsonConvert.DeserializeObject<StationDtoImp[]>(deserializedStations);
 
                     SeedStations(context, stationDtos);
@@ -44,7 +44,7 @@
                 //SeedRoutes and Points
                 if (!context.Routes.Any())
                 {
-                    var deserializedRoutes = File.ReadAllText(Constants.RoutesListPath);
+                    var deserializedRoutes = File.ReadAllText(WebConstants.RoutesListPath);
                     var routeDtos = JsonConvert.DeserializeObject<RouteDtoImp[]>(deserializedRoutes);
 
                     SeedRoutes(context, routeDtos);
@@ -52,7 +52,7 @@
                 //SeedTrains
                 if (!context.Trains.Any())
                 {
-                    var deserializedTrains = File.ReadAllText(Constants.TrainsListPath);
+                    var deserializedTrains = File.ReadAllText(WebConstants.TrainsListPath);
                     var trainDtos = JsonConvert.DeserializeObject<TrainDtoImp[]>(deserializedTrains);
 
                     SeedTrains(context, trainDtos);
@@ -60,7 +60,7 @@
                 //SeedTravelLog
                 if (!context.TravelLogs.Any())
                 {
-                    var deserializedTravelLog = File.ReadAllText(Constants.TravelLogsListPath);
+                    var deserializedTravelLog = File.ReadAllText(WebConstants.TravelLogsListPath);
                     var travelLogsDtos = JsonConvert.DeserializeObject<TravelLogDtoImp[]>(deserializedTravelLog);
 
                     SeedTravelLog(context, travelLogsDtos);
@@ -165,8 +165,8 @@
             Task
                 .Run(async () =>
                 {
-                    var adminRoleName = Constants.AdministratorRole;
-                    var userRoleName = Constants.UserRole;
+                    var adminRoleName = WebConstants.AdministratorRole;
+                    var userRoleName = WebConstants.UserRole;
                     var roles = new[]
                     {
                         adminRoleName,
@@ -189,8 +189,8 @@
         }
         private static async Task RegisterAdminUser(UserManager<User> userManager, string adminRoleName)
         {
-            var adminEmail = Constants.AdminEmail;
-            var adminUserName = Constants.AdminUserName;
+            var adminEmail = WebConstants.AdminEmail;
+            var adminUserName = WebConstants.AdminUserName;
 
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
@@ -202,7 +202,7 @@
                     UserName = adminUserName
                 };
 
-                await userManager.CreateAsync(adminUser, Constants.AdminPassword);
+                await userManager.CreateAsync(adminUser, WebConstants.AdminPassword);
 
                 await userManager.AddToRoleAsync(adminUser, adminRoleName);
             }
@@ -212,7 +212,7 @@
             if (context.Users.Count() <= 1)
             {
                 var usersList = File
-                .ReadAllText(Constants.UsersListPath);
+                .ReadAllText(WebConstants.UsersListPath);
 
                 var deserializedUsers = JsonConvert.DeserializeObject<User[]>(usersList);
 
@@ -220,11 +220,11 @@
                 {
                     foreach (var user in deserializedUsers)
                     {
-                        var result = await userManager.CreateAsync(user, Constants.UserPassword);
+                        var result = await userManager.CreateAsync(user, WebConstants.UserPassword);
                     }
                     foreach (var user in deserializedUsers)
                     {
-                        var result = await userManager.AddToRoleAsync(user, Constants.UserRole);
+                        var result = await userManager.AddToRoleAsync(user, WebConstants.UserRole);
                     }
                 })
                 .GetAwaiter()

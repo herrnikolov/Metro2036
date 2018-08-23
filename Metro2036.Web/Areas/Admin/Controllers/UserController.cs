@@ -2,10 +2,11 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
     using Metro2036.Models;
     using Metro2036.Services.Models;
     using Metro2036.Services.Interfaces;
+    using System.Threading.Tasks;
+    using Metro2036.Services.Models.User;
 
     public class UserController : BaseController
     {
@@ -23,15 +24,15 @@
             _userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //var allUsers = userService.GetAll();
 
             //var users = userManager.GetUsersInRoleAsync("User");
 
-            var result = _userService.GetAll();
+            var users = await this._userService.GetAll();
 
-            return View(result);
+            return View(new UserListingViewModel { Users = users });
         }
 
     }

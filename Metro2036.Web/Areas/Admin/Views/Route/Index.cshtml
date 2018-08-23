@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Metro2036.Services.Models.Route.RouteIndexViewModel>
+
+@{
+    ViewBag.Title = "Routes";
+}
+
+<h1>Routes</h1>
+
+@foreach (var route in Model)
+    {
+        <partial name="_Summary" model="route" />
+    }
