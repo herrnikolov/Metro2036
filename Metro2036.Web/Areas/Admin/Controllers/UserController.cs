@@ -7,6 +7,7 @@
     using Metro2036.Services.Interfaces;
     using System.Threading.Tasks;
     using Metro2036.Services.Models.User;
+    using AutoMapper;
 
     public class UserController : BaseController
     {
@@ -26,14 +27,17 @@
 
         public async Task<IActionResult> Index()
         {
-            //var allUsers = userService.GetAll();
-
-            //var users = userManager.GetUsersInRoleAsync("User");
-
             var users = await this._userService.GetAll();
 
             return View(new UserListingViewModel { Users = users });
         }
 
+        // GET: /TravelLogs/id
+        public ActionResult TravelLogs(string id)
+        {
+            var travelLogs = this._userService.GetTravels(id);
+
+            return View(travelLogs);
+        }
     }
 }

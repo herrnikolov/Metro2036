@@ -65,34 +65,16 @@ ToDo:
 Home Page - Add some content
 Abount Page - Add some content
 Contact - Add contacts
-FeedBack Form ?
-
 
 Admin Area:
 (As Drop Down)
-User Maangement
-	Index - UserID, User Name, EMail, Actions(Edit, Delete) | Add New Userg
-Role Maangement
-
-User Management - CRUD, Roles management
-
 
 Points Routes Stations Trains - in DropDown Menu - Management
 	- With View and Bind Model 
 
-Identity Area :
-	 Scaffold required pages
-
-User Area:
-	Home Paage 
-
 Models:
-Point - Service, 
+Point - Service, Controler
 Route - Service, Controler, View()
 Station - Service, Controler, View()
-Train - Service, 
-
-Travel Log
-User
-
+Train - Service, Controler
 --------------------------------------------------------------------------------------------------------

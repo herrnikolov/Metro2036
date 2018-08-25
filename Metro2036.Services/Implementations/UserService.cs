@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using AutoMapper.QueryableExtensions;
     using Microsoft.EntityFrameworkCore;
+    using Metro2036.Models;
 
     public class UserService : BaseService, IUserService
     {
@@ -25,11 +26,14 @@
             .OrderBy(u => u.UserName)
             .ProjectTo<UserListingServiceModel>()
             .ToListAsync();
-        //{
-        //    var users = _context.Users
-        //        .OrderBy(u => u.UserName);
 
-        //    return users;
-        //}
+        //Get by ID | Details
+        public IEnumerable<TravelLog> GetTravels(string id)
+        {
+            var travellog =  _context.TravelLogs
+                .Include(tl => tl.Station)
+                .Where(tl => tl.UserId == id);
+            return travellog;
+        }
     }
 }

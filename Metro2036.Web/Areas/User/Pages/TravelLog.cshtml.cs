@@ -34,6 +34,7 @@ namespace Metro2036.Web.Areas.User.Pages
             this.Travels = this._context.TravelLogs
                 .Include(tl => tl.Station)
                 .OrderBy(tl => tl.Id)
+                .Where(tl => tl.UserId == currentUser)
                 .Select(TravelLogViewModel.ListTravels)
                 .ToList();
         }

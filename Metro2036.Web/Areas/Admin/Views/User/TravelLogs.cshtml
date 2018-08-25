@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TravelLog>
+
+@{
+    ViewBag.Title = "Users's Travel Log";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Travels</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var travel in Model)
+        {
+            <tr>
+                <td>
+                    @travel.Station.Name
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
