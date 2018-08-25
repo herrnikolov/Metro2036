@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Tests", "Metro203
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Services", "Metro2036.Services\Metro2036.Services.csproj", "{3BD3DB13-A934-4698-AE93-78726890D135}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metro2036.Common", "Metro2036.Common\Metro2036.Common.csproj", "{2A47B49F-BBE6-4061-A56A-639E31E51DCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metro2036.Common", "Metro2036.Common\Metro2036.Common.csproj", "{2A47B49F-BBE6-4061-A56A-639E31E51DCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

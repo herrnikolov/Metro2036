@@ -1,11 +1,11 @@
 ﻿namespace Metro2036.Web.Models.Point
 {
     using System.ComponentModel.DataAnnotations;
-    public class PointDetailsViewModel
+    public class PointListingServiceModel
     {
         public int Id { get; set; }
 
-        public int stop { get; set; }
+        public int Stop { get; set; }
 
         public int StopCode { get; set; }
 

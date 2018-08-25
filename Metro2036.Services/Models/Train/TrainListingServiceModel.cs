@@ -2,7 +2,7 @@
 {
     using Metro2036.Models;
     using System.ComponentModel.DataAnnotations;
-    public class TrainConciseViewModel
+    public class TrainListingServiceModel
     {
         public int Id { get; set; }
 

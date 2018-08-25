@@ -5,12 +5,11 @@
     using Microsoft.AspNetCore.Identity;
 
     public class User : IdentityUser
-    {
-        //[Key]
-        //public int Id { get; set; }
-        
+    {        
         public string TravelCardId { get; set; }
 
         public ICollection<TravelLog> Travels { get; set; } = new List<TravelLog>();
+
+        public ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     }
 }

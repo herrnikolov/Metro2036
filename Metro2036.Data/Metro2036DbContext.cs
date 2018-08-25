@@ -19,6 +19,7 @@
         public DbSet<Train> Trains { get; set; }
         //public DbSet<User> Users { get; set; }
         public DbSet<TravelLog> TravelLogs { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,6 +30,7 @@
             builder.ApplyConfiguration(new TrainConfiguration());
             //builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new TravelLogConfiguration());
+            builder.ApplyConfiguration(new FeedbackConfiguration());
 
             base.OnModelCreating(builder);
         }

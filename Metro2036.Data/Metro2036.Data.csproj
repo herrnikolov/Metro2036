@@ -14,6 +14,8 @@
     <Compile Remove="Migrations\20180805091447_TravelLog_ChangeUserId.cs" />
     <Compile Remove="Migrations\20180805111326_TravelLogWithSeedData.cs" />
     <Compile Remove="Migrations\20180807140624_TrainModelImg.cs" />
+    <Compile Remove="Migrations\20180824122345_Feedback.cs" />
+    <Compile Remove="Migrations\20180824122726_Feedbacks.cs" />
   </ItemGroup>
 
   <ItemGroup>
