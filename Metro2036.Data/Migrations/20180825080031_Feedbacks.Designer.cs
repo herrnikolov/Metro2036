@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Metro2036.Web.Data.Migrations
 {
     [DbContext(typeof(Metro2036DbContext))]
-    [Migration("20180824130459_Feedbacks")]
+    [Migration("20180825080031_Feedbacks")]
     partial class Feedbacks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

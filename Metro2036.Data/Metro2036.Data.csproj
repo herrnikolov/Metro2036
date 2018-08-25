@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20180807140624_TrainModelImg.cs" />
     <Compile Remove="Migrations\20180824122345_Feedback.cs" />
     <Compile Remove="Migrations\20180824122726_Feedbacks.cs" />
+    <Compile Remove="Migrations\20180824130459_Feedbacks.cs" />
+    <Compile Remove="Migrations\20180825074839_Feedbacks.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,25 @@
+﻿@page
+@model FeedbackLogModel
+@{
+    ViewData["Title"] = "Feedback Log";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model.Feedbacks)
+        {
+        <tr>
+            <td>
+                @feedback.Message
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
