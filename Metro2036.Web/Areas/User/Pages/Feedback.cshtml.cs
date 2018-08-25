@@ -54,7 +54,7 @@ namespace Metro2036.Web.Areas.User.Pages
 
             this._context.Feedbacks.Add(feedback);
             this._context.SaveChanges();
-            return this.RedirectToPage("/User");
+            return this.RedirectToPage("/User/FeedbackLog");
         }
     }
 }

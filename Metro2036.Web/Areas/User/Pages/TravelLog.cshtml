@@ -1,0 +1,24 @@
+﻿@page
+@model TravelLogModel
+@{
+    ViewData["Title"] = "Travel's Log";
+}
+
+<h2>@ViewData["Title"]</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Travels</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var travel in Model.Travels)
+            {
+                <tr>
+                    <td>
+                        @travel.Station.Name
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

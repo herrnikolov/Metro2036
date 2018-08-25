@@ -9,34 +9,33 @@ namespace Metro2036.Web.Areas.User.Pages
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.EntityFrameworkCore;
     using static WebConstants;
 
     [Area(UserArea)]
     [Authorize(Roles = UserRole)]
-    public class FeedbackLogModel : PageModel
+    public class TravelLogModel : PageModel
     {
         private Metro2036DbContext _context;
         private UserManager<User> _userManager;
 
-        public FeedbackLogModel(Metro2036DbContext context,
-            UserManager<User> userManager)
+        public TravelLogModel(Metro2036DbContext context,
+               UserManager<User> userManager)
         {
             this._context = context;
             this._userManager = userManager;
         }
 
-        public IEnumerable<FeedbackLogViewModel> Feedbacks { get; set; }
-
+        public IEnumerable<TravelLogViewModel> Travels { get; set; }
         public void OnGet()
         {
             var currentUser = this._userManager.GetUserId(this.User);
 
-            this.Feedbacks = this._context.Feedbacks
-                .Where(u => u.UserId == currentUser)
-                .OrderBy(f => f.Id)
-                .Select(FeedbackLogViewModel.ListFeedback)
+            this.Travels = this._context.TravelLogs
+                .Include(tl => tl.Station)
+                .OrderBy(tl => tl.Id)
+                .Select(TravelLogViewModel.ListTravels)
                 .ToList();
-
         }
     }
 }

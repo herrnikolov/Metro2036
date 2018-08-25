@@ -6,12 +6,12 @@ Requirenments:
 
 OK - ASP.Net Core 2.1 Solution
 
-* 8 web pages (views)
+OK - 8 web pages (views)
 OK - 4 entity models -  Point, Route, Station, Train, TravelLog
-* 4 controllers  (with at least one action for each)
-* 3 Razor pages
+OK - 4 controllers  (with at least one action for each)
+OK - 3 Razor pages - User Area - FeedBack, FeedBackLog, TravelLog
 
-* Use sections and partial views.
+OK - Use sections and partial views. - Partial in Admin/Route - Area
 * Use display and editor templates.
 
 OK - Use Entity Framework Core to access your database
@@ -19,13 +19,13 @@ OK - Use Entity Framework Core to access your database
 OK - Use MVC Areas - Admin, User Areas
 	to separate different parts of your application (e.g. area for administration)
 
-* Adapt the default ASP.NET Core site template or get another free theme
+* -  Adapt the default ASP.NET Core site template or get another free theme
 	Use responsive design based on Twitter Bootstrap / Google Material design
 	
-* Use the standard ASP.NET Identity System for managing users and roles
+OK - Use the standard ASP.NET Identity System for managing users and roles
 	Your registered users should have at least one of these roles: user and administrator
 	
-* Write unit tests for your logic, controllers, actions, helpers, etc.
+* - Write unit tests for your logic, controllers, actions, helpers, etc.
 	You should have at least 10 test cases
 
 * Implement error handling and data validation to avoid crashes when invalid data is entered
@@ -36,15 +36,17 @@ OK - Use MVC Areas - Admin, User Areas
 
 * Handle correctly the special HTML characters and tags like <br /> and <script> (escape special characters)
 
-* Use Dependency Injection
+OK - Use Dependency Injection - Services Injection
 	The built-in one in ASP.NET Core is perfectly fine
 
-* Optionally, use AutoМapping
+OK - Optionally, use AutoМapping
 
 * Prevent from security vulnerabilities like SQL Injection, XSS, CSRF, parameter tampering, etc.
 
 Bonuses
-* Host the application in a cloud environment, e.g. in AppHarbor or Azure
+OK - Host the application in a cloud environment, e.g. in AppHarbor or Azure
+	Hosted in Azure
+
 ---------------------------------------------------------------------------------------------------------
 Assessment Criteria
 * Functionality – 0…20
