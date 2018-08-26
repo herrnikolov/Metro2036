@@ -25,14 +25,15 @@
             //TravelLog
             CreateMap<TravelLogDtoImp, TravelLog>();
 
+            //Station:
             //ViewStation
             CreateMap<StationDetailsViewModel, Station>();
             //BindStation
             CreateMap<StationEditBindModel, Station>();
             //DeleteStation
             CreateMap<StationDeleteViewModel, Station>();
-
-
+            //CreateStation
+            CreateMap<StationCreateViewModel, Station>();
 
         }
     }

@@ -9,10 +9,12 @@
     public class StationController : BaseController
     {
         private IStationService _stationService;
+        private readonly IMapper _mapper;
 
-        public StationController(IStationService stationService)
+        public StationController(IStationService stationService, IMapper mapper)
         {
             _stationService = stationService;
+            _mapper = mapper;
         }
 
         // GET: Index
@@ -27,7 +29,7 @@
         {
             var station = _stationService.Get(id);
 
-            var model = Mapper.Map<StationDetailsViewModel>(station);
+            var model = _mapper.Map<StationDetailsViewModel>(station);
 
 
             //if (model.Id == null)
@@ -46,18 +48,16 @@
         // POST: /Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(StationCreateViewModel model)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var station = this._mapper.Map<Station>(model);
+            _stationService.Add(station);
+            return RedirectToAction("Details");
+
         }
 
         // GET: /Edit/id
@@ -65,7 +65,7 @@
         {
             var station = _stationService.Get(id);
 
-            var model = Mapper.Map<StationEditBindModel>(station);
+            var model = _mapper.Map<StationEditBindModel>(station);
 
 
             //if (model.Id == null)
@@ -80,7 +80,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, StationEditBindModel station)
         {
-            var model = Mapper.Map<Station>(station);
+            var model = _mapper.Map<Station>(station);
 
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@
         {
             var station = _stationService.Get(id);
 
-            var model = Mapper.Map<StationDeleteViewModel>(station);
+            var model = _mapper.Map<StationDeleteViewModel>(station);
 
             return View(model);
         }
@@ -106,7 +106,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Delete(StationDeleteViewModel station)
         {
-            var model = Mapper.Map<Station>(station);
+            var model = _mapper.Map<Station>(station);
 
             _stationService.Delete(model);
             return RedirectToAction("Index", "Station");
