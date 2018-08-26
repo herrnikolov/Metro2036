@@ -1,18 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Metro2036.Web.Areas.Admin.Controllers
+﻿namespace Metro2036.Web.Areas.Admin.Controllers
 {
-    public class TrainController : Controller
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Metro2036.Services.Interfaces;
+    using Metro2036.Services.Models.Train;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
+    public class TrainController : BaseController
     {
+        private ITrainService _trainService;
+
+        public TrainController(ITrainService trainService)
+        {
+            _trainService = trainService;
+        }
         // GET: Train
         public ActionResult Index()
         {
-            return View();
+            var model = new TrainIndexViewModel
+            { Trains = _trainService.GetAll() };
+            return View(model);
         }
 
         // GET: Train/Details/5
