@@ -13,13 +13,19 @@
 
         public int Capacity { get; set; }
 
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Year")]
         public DataType Year { get; set; }
 
         [Url]
+        [Display(Name = "Train Image")]
         public string ImageUrl { get; set; }
 
+        [Display(Name = "Serial Number")]
+        [StringLength(50, ErrorMessage = "Please enter Valid Serial Number")]
         public string SerialNumber { get; set; }
 
+        [Display(Name = "Route Id")]
         public int RouteId { get; set; }
 
         public Route Route { get; set; }

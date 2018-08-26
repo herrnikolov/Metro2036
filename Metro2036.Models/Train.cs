@@ -17,6 +17,8 @@
         public int Capacity { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Year")]
         public DataType Year { get; set; }
 
         [Url]
