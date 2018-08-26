@@ -61,20 +61,15 @@ Assessment Criteria
 * Bonus (bonus points are given for exceptional project) – 0…25
 --------------------------------------------------------------------------------------------------------
 ToDo:
-
-Home Page - Add some content
-Abount Page - Add some content
-Contact - Add contacts
-
 Admin Area:
 (As Drop Down)
 
 Points Routes Stations Trains - in DropDown Menu - Management
 	- With View and Bind Model 
 
-Models:
+Models Progress:
 Point - Service, Controler
-Route - Service, Controler, View()
-Station - Service, Controler, View()
-Train - Service, Controler
+Route - Service, Controler, View(CRUD)
+Station - Service, Controler, View(List)
+Train - Service, Controler, View(List)
 --------------------------------------------------------------------------------------------------------
