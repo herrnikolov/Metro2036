@@ -1,0 +1,66 @@
+﻿@model TrainIndexViewModel
+
+@{
+    ViewBag.Title = "Trains";
+}
+
+<h1>Trains</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Maker
+                </th>
+                <th>
+                    Speed
+                </th>
+                <th>
+                    Capacity
+                </th>
+                <th>
+                    Year
+                </th>
+
+                <th>
+                    Serial Number
+                </th>
+                <th>
+                    Route
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var train in Model.Trains)
+            {
+            <tr>
+                <td>
+                    <img src="@train.ImageUrl" class="img-thumbnail" width="100" alt="" />
+                </td>
+                <td>
+                    @train.Maker
+                </td>
+                <td>
+                    @train.Speed
+                </td>
+                <td>
+                    @train.Capacity
+                </td>
+                <td>
+                    @train.Year
+                </td>
+                <td>
+                    @train.SerialNumber
+                </td>
+                <td>
+                    @train.Route.RouteName
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

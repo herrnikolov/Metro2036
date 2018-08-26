@@ -112,12 +112,17 @@
         private static void ConfigureMetro2036Services(IServiceCollection services)
         {
             //Dependency Injection Section
-            //StationService
-            services.AddScoped<IStationService, StationService>();
-            //RouteService
+            // Point Service
+            services.AddScoped<IPointService, PointService>();
+            //Route Service
             services.AddScoped<IRouteService, RouteService>();
-            //UserService
+            //Station Service
+            services.AddScoped<IStationService, StationService>();
+            //Train Service
+            services.AddScoped<ITrainService, TrainService>();
+            //User Service
             services.AddScoped<IUserService, UserService>();
+            //
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -32,6 +32,7 @@
         {
             var travellog =  _context.TravelLogs
                 .Include(tl => tl.Station)
+                .Include(tl => tl.User)
                 .Where(tl => tl.UserId == id);
             return travellog;
         }

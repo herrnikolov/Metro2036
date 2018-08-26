@@ -1,8 +1,9 @@
 ﻿namespace Metro2036.Web.Areas.Admin.Models.Train
 {
     using Metro2036.Models;
+    using Metro2036.Common.Mapping;
     using System.ComponentModel.DataAnnotations;
-    public class TrainListingServiceModel
+    public class TrainListingServiceModel : IMapFrom<Train>
     {
         public int Id { get; set; }
 

@@ -13,11 +13,14 @@
     <tbody>
         @foreach (var travel in Model)
         {
-            <tr>
-                <td>
-                    @travel.Station.Name
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @travel.User.UserName
+            </td>
+            <td>
+                @travel.Station.Name
+            </td>
+        </tr>
         }
     </tbody>
 </table>

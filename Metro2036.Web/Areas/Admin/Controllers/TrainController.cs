@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Metro2036.Services.Interfaces;
+    using Metro2036.Services.Models.Route;
     using Metro2036.Services.Models.Train;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -20,8 +21,7 @@
         // GET: Train
         public ActionResult Index()
         {
-            var model = new TrainIndexViewModel
-            { Trains = _trainService.GetAll() };
+            var model = new TrainIndexViewModel { Trains = _trainService.GetAll() };
             return View(model);
         }
 

@@ -15,6 +15,11 @@
             _context = context;
         }
 
+        //Get ALL | Index
+        IEnumerable<Station> IStationService.GetAll()
+        {
+            return _context.Stations.OrderBy(s => s.StantionId);
+        }
         //ADD | Create
         public Station Add(Station station)
         {
@@ -28,13 +33,6 @@
         {
             return _context.Stations.FirstOrDefault(s => s.Id == id);
         }
-
-        //Get ALL | Index
-        IEnumerable<Station> IStationService.GetAll()
-        {
-            return _context.Stations.OrderBy(s => s.StantionId);
-        }
-
         //Update | Edit
         public Station Update(Station station)
         {

@@ -4,6 +4,7 @@
     using Metro2036.Data;
     using Metro2036.Models;
     using Metro2036.Services.Interfaces;
+    using Metro2036.Web.Areas.Admin.Models.Train;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
@@ -19,11 +20,12 @@
         }
 
         //Get ALL | Index
-        public async Task<IEnumerable<TModel>> GetAll<TModel>() where TModel : class
-            => await this._context.Trains
-            .OrderBy(t => t.Id)
-            .ProjectTo<TModel>()
-            .ToListAsync();
+        IEnumerable<Train> ITrainService.GetAll()
+        {
+            return _context
+                .Trains.OrderBy(t => t.Id)
+                .Include(t => t.Route);
+        }
 
         public Train Add(Train route)
         {
@@ -39,7 +41,6 @@
         {
             throw new System.NotImplementedException();
         }
-
         public Train Update(Train route)
         {
             throw new System.NotImplementedException();
