@@ -1,0 +1,74 @@
+
+# Run SQL Server 2017 in container to dev on Linux
+sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourIncredibleComplexPassword123!@#' \
+   -p 1433:1433 --name sql \
+   -d microsoft/mssql-server-linux:2017-latest
+----------------------------------------------------------------------------
+# Useful commands
+docker image ls
+docker image prune
+docker container ls
+docker ps -a
+----------------------------------------------------------------------------
+# To run without compose
+#Build container
+#Update connection string before that!
+docker build --rm -f "Dockerfile" -t metro2036:latest .
+# Run SQL Server 2017
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourIncredibleComplexPassword123!@#' -p 1433:1433 --name  -d microsoft/mssql-server-linux:2017-latest
+# Run Metro2036 app in container
+docker run --name metro2036 --rm -it -p 8000:80 --link sql -e SQLSERVER_HOST=sql metro2036
+----------------------------------------------------------------------------
+#My Working Version
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /app
+
+#copy csproj and restore as distinc layer
+COPY *.sln .
+COPY Metro2036.Web/*.csproj ./Metro2036.Web/
+COPY Metro2036.Data/*.csproj ./Metro2036.Data/
+COPY Metro2036.Models/*.csproj ./Metro2036.Models/
+COPY Metro2036.Services/*.csproj ./Metro2036.Services/
+COPY Metro2036.Common/*.csproj ./Metro2036.Common/
+RUN dotnet restore
+
+#copy everithing else and build
+COPY Metro2036.Web/. ./Metro2036.Web/
+COPY Metro2036.Data/. ./Metro2036.Data/
+COPY Metro2036.Models/. ./Metro2036.Models/
+COPY Metro2036.Services/. ./Metro2036.Services/
+COPY Metro2036.Common/. ./Metro2036.Common/
+WORKDIR /app/Metro2036.Web
+RUN dotnet publish -c Release -o out
+
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
+WORKDIR /app
+COPY --from=build /app/Metro2036.Web/out ./
+ENTRYPOINT [ "dotnet", "Metro2036.Web.dll" ]
+----------------------------------------------------------------------------
+# Visual Stuid Docker File
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /src
+COPY ["Metro2036.Web/Metro2036.Web.csproj", "Metro2036.Web/"]
+COPY ["Metro2036.Services/Metro2036.Services.csproj", "Metro2036.Services/"]
+COPY ["Metro2036.Data/Metro2036.Data.csproj", "Metro2036.Data/"]
+COPY ["Metro2036.Models/Metro2036.Models.csproj", "Metro2036.Models/"]
+COPY ["Metro2036.Common/Metro2036.Common.csproj", "Metro2036.Common/"]
+RUN dotnet restore "Metro2036.Web/Metro2036.Web.csproj"
+COPY . .
+WORKDIR "/src/Metro2036.Web"
+RUN dotnet build "Metro2036.Web.csproj" -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish "Metro2036.Web.csproj" -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "Metro2036.Web.dll"]
+----------------------------------------------------------------------------
+

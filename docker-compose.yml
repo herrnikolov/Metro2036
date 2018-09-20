@@ -9,7 +9,7 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "YourIncredibleComplexPassword123!@#"      
     ports:
-      - 1433:1433 # for debug. Remove this for production
+      - 1433:1433 # For debuging. Remove this for Production!
   # ASP.NET Core 2.1 App 
   web:
     container_name: metro2036
