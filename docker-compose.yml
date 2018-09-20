@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  # SQL Server
+  sql:
+    image: microsoft/mssql-server-linux:2017-latest
+    container_name: sql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourIncredibleComplexPassword123!@#"      
+    ports:
+      - 1433:1433 # for debug. Remove this for production
+  # ASP.NET Core 2.1 App 
+  web:
+    container_name: metro2036
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    links:
+      - sql
+    depends_on:
+      - sql
+
+
+
