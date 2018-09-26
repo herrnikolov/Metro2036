@@ -61,8 +61,8 @@ echo "* Install Ansible role(s) for jenkins and docker in /playbooks/roles/ ..."
 ansible-galaxy install geerlingguy.jenkins -p /playbooks/roles/
 ansible-galaxy install geerlingguy.docker -p /playbooks/roles/
 
-echo "* Patch Java role ..."
-cp /vagrant/RedHat.yml /playbooks/roles/geerlingguy.java/vars/RedHat.yml
+# echo "* Patch Java role ..."
+# cp /vagrant/RedHat.yml /playbooks/roles/geerlingguy.java/vars/RedHat.yml
 
 echo "* Execute Ansible Playbooks ..."
 ansible-playbook /playbooks/install-all.yml
