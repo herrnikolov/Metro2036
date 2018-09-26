@@ -9,3 +9,6 @@
     - firewall-8080
     - git
     - geerlingguy.jenkins
+    - jenkins_plugins_install_dependencies: yes
+    - jenkins_plugins_state: present
+    - jenkins_plugins: [build-pipeline-plugin, ssh, ssh-slaves, git, github, log-parser, copyartifact, workflow-aggregator, workflow-multibranch, docker-workflow, template-project]
