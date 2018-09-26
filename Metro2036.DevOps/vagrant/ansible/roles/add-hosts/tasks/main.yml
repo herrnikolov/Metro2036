@@ -1,0 +1,17 @@
+---
+  - name: Add ansible host
+    lineinfile:
+      path: /etc/hosts
+      line: '192.168.1.100 ansible.lab.local ansible'
+  - name: Add jenkins host
+    lineinfile:
+      path: /etc/hosts
+      line: '192.168.1.101 jenkins.lab.local jenkins'
+  - name: Add nagios host
+    lineinfile:
+      path: /etc/hosts
+      line: '192.168.1.102 nagios.lab.local nagios'
+  - name: Add docker host
+    lineinfile:
+      path: /etc/hosts
+      line: '192.168.1.103 docker.lab.local docker'

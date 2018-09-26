@@ -1,0 +1,11 @@
+---
+- hosts: jenkins
+  become: true
+  vars:
+    jenkins_hostname: jenkins.lab.local
+  roles:
+    - disable-selinux
+    - add-hosts
+    - firewall-8080
+    - git
+    - geerlingguy.jenkins
