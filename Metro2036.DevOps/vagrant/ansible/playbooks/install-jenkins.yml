@@ -5,8 +5,8 @@
     jenkins_hostname: jenkins.lab.local
     jenkins_plugins_state: present
     jenkins_plugins:
-      - workflow-multibranch
       - git
+      - github
     jenkins_plugins_install_dependencies: yes
   roles:
     - disable-selinux
