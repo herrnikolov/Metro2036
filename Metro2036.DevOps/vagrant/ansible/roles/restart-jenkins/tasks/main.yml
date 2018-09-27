@@ -1,0 +1,3 @@
+---
+  - name: Restart Jenkins
+    shell: /vagrant/restart-jenkins.sh

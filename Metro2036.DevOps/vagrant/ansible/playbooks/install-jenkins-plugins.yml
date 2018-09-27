@@ -18,4 +18,5 @@
     - docker-workflow
     - template-project
   roles:
+    - restart-jenkins
     - geerlingguy.jenkins
