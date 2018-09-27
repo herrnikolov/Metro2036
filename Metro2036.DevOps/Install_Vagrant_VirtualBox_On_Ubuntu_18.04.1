@@ -1,0 +1,33 @@
+# Install Vagrant 2.1.5 and VirtualBox 5.2 on Ubuntu 18.04.1
+
+# Install Vagrant 2.1.5
+sudo apt-get update && sudo apt-get upgrade -y
+wget https://releases.hashicorp.com/vagrant/2.1.5/vagrant_2.1.5_x86_64.deb
+sudo dpkg -i vagrant_2.1.5_x86_64.deb
+
+
+# Install VirtualBox 5.2.X
+sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
+sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms
+
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+
+sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list'
+
+sudo apt-get update
+sudo apt-get install virtualbox-5.2 -y
+
+curl -O https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack
+sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack
+
+#Check VirtualBox Version and Extension Pack
+VBoxManage -v
+VBoxManage list extpacks
+
+#Ref
+https://websiteforstudents.com/installing-virtualbox-5-2-ubuntu-17-04-17-10/
+
+sudo apt-get install p7zip-full git
+
+git clone https://github.com/herrnikolov/Metro2036.git
