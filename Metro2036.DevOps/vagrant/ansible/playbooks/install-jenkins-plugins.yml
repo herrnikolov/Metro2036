@@ -4,6 +4,7 @@
   vars:
     jenkins_package_state: latest
     jenkins_hostname: jenkins.lab.local
+    jenkins_plugins_state: latest
     jenkins_plugins:
     - build-pipeline-plugin
     - ssh

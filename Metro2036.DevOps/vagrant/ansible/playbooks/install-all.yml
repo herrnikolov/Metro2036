@@ -5,4 +5,4 @@
 - include: install-docker.yml
 - include: install-nagios.yml
 
-# - include: modify-jenkins.yml
+- include: modify-jenkins.yml
