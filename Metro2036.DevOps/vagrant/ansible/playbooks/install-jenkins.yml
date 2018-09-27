@@ -4,9 +4,6 @@
   vars:
     jenkins_package_state: latest
     jenkins_hostname: jenkins.lab.local
-    jenkins_plugins_state: present
-    jenkins_plugins:
-      - github
   roles:
     - disable-selinux
     - add-hosts
