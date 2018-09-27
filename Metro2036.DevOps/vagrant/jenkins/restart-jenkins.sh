@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 
-# Create Jenkins credentials
+# Restart Jenkins
 # 
 
-service jenkins restart
+sudo service jenkins restart
