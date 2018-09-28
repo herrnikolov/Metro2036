@@ -1,3 +1,7 @@
 ---
+  - name: Turn on execute permission for restart-jenkins.sh
+    file:
+      path=/vagrant/restart-jenkins.sh
+      mode="a+x"
   - name: Restart Jenkins
     shell: /vagrant/restart-jenkins.sh
