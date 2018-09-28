@@ -1,3 +1,7 @@
 ---
+  - name: Turn on execute permission for jenkins-add-node.sh
+    file:
+      path=/vagrant/jenkins-add-node.sh
+      mode="a+x"
   - name: Add Jenkins slave node
     command: /vagrant/jenkins-add-node.sh http://localhost:8080/ docker.lab.local vagrant

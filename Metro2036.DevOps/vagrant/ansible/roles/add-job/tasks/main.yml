@@ -1,3 +1,7 @@
 ---
+  - name: Turn on execute permission for jenkins-add-job.sh
+    file:
+      path=/vagrant/jenkins-add-job.sh
+      mode="a+x"
   - name: Add Jenkins Job
     shell: /vagrant/jenkins-add-job.sh
