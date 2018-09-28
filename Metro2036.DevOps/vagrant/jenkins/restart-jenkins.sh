@@ -4,4 +4,4 @@
 # Create Jenkins credentials
 # 
 
-service jenkins restart
+sudo service jenkins restart
