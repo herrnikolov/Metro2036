@@ -3,9 +3,9 @@
   become: true
   vars:
     jenkins_hostname: jenkins.lab.local    
-    jenkins_plugins_state: latest
+    jenkins_plugins_state: present
     jenkins_plugins_install_dependencies: true
-    jenkins_package_state: latest        
+    jenkins_package_state: present        
     jenkins_plugins:
     - build-pipeline-plugin
     - ssh
@@ -19,5 +19,4 @@
     - docker-workflow
     - template-project
   roles:
-    - restart-jenkins
     - geerlingguy.jenkins
