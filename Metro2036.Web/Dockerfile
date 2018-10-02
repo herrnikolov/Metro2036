@@ -1,6 +1,3 @@
-ENV ASPNETCORE_ENVIRONMENT='Production'
-ENV Metro2036Az = 'Server=sql,1433;Database=Metro2036;User Id=SA; Password='
-
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
