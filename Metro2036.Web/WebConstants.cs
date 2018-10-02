@@ -15,11 +15,11 @@
         public const string UserPassword = "P@ssw0rd";
 
         // Tables Seeding Paths
-        public const string UsersListPath = @"wwwroot\seedfiles\users.json";
-        public const string StationsListPath = @"wwwroot\seedfiles\metro_stations.json";
-        public const string RoutesListPath = @"wwwroot\seedfiles\routes.json";
-        public const string TrainsListPath = @"wwwroot\seedfiles\trains.json";
-        public const string TravelLogsListPath = @"wwwroot\seedfiles\travellog.json";
+        public const string UsersListPath = @"wwwroot/seedfiles/users.json";
+        public const string StationsListPath = @"wwwroot/seedfiles/metro_stations.json";
+        public const string RoutesListPath = @"wwwroot/seedfiles/routes.json";
+        public const string TrainsListPath = @"wwwroot/seedfiles/trains.json";
+        public const string TravelLogsListPath = @"wwwroot/seedfiles/travellog.json";
         
     }
 }
