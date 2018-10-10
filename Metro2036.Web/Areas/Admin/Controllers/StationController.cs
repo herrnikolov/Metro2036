@@ -10,11 +10,14 @@
     {
         private IStationService _stationService;
         private readonly IMapper _mapper;
+        private ITimingService _timingService;
 
-        public StationController(IStationService stationService, IMapper mapper)
+
+        public StationController(IStationService stationService, IMapper mapper, ITimingService timingService)
         {
             _stationService = stationService;
             _mapper = mapper;
+            _timingService = timingService;
         }
 
         // GET: Index
@@ -31,6 +34,7 @@
 
             var model = _mapper.Map<StationDetailsViewModel>(station);
 
+            var stationTiming = _timingService.GetTime(station.StantionId);
 
             //if (model.Id == null)
             //{

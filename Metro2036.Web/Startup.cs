@@ -133,6 +133,8 @@
             services.AddScoped<ITrainService, TrainService>();
             //User Service
             services.AddScoped<IUserService, UserService>();
+            //Timing Services
+            services.AddScoped<ITimingService, TimingService>();
             //
         }
 
