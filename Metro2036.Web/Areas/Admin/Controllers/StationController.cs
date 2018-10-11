@@ -32,7 +32,7 @@
         {
             var station = _stationService.Get(id);
 
-            var model = _mapper.Map<StationDetailsViewModel>(station);
+            //var model = _mapper.Map<StationDetailsViewModel>(station);
 
             var stationTiming = _timingService.GetTime(station.StantionId);
 
@@ -40,6 +40,20 @@
             //{
             //    return RedirectToAction(nameof(Index));
             //}
+
+            var model = new StationDetailsViewModel
+            {
+                Id = id,
+                StantionId = station.StantionId,
+                RouteId = station.RouteId,
+                Code = station.Code,
+                PointId = station.PointId,
+                Name = station.Name,
+                Latitude = station.Latitude,
+                Longitude = station.Longitude,
+                StationTimings = stationTiming
+            };
+
             return View(model);
         }
 

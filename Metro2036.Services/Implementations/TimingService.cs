@@ -46,14 +46,14 @@
 
             var currentTime = DateTime.Now;
 
-            var route01Timings = deserializedTimes.route01
+            var stationTimingsRoute01 = deserializedTimes.route01
                 .Split(',')
                 .Select(x => DateTime.ParseExact(x, "HH:mm", CultureInfo.InvariantCulture))
                 .Where(x => x > currentTime)
                 .Take(10)
                 .ToArray();
 
-            return route01Timings;
+            return stationTimingsRoute01;
         }
     }
 }

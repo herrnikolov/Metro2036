@@ -1,4 +1,6 @@
-﻿namespace Metro2036.Services.Models.Station
+﻿using System;
+
+namespace Metro2036.Services.Models.Station
 {
     public class StationDetailsViewModel
     {
@@ -17,5 +19,7 @@
         public decimal Latitude { get; set; }
 
         public decimal Longitude { get; set; }
+
+        public DateTime[] StationTimings { get; set; }
     }
 }
