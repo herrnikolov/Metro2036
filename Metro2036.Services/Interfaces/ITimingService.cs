@@ -7,6 +7,6 @@
 
     public interface ITimingService
     {
-        Station GetTime(int StantionId);
+        DateTime[] GetTime(int StantionId);
     }
 }
