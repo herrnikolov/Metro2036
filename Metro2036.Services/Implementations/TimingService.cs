@@ -44,7 +44,9 @@
 
             var deserializedTimes = JsonConvert.DeserializeObject<StationTimingsDtoImp>(json);
 
-            var currentTime = DateTime.Now;
+            var localTimeInUTC = DateTime.UtcNow;
+            var timeZoneDesired = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time");
+            var currentTime = TimeZoneInfo.ConvertTimeFromUtc(localTimeInUTC, timeZoneDesired);
 
             var stationTimingsRoute01 = deserializedTimes.route01
                 .Split(',')
@@ -52,6 +54,8 @@
                 .Where(x => x > currentTime)
                 .Take(10)
                 .ToArray();
+
+            //TODO: Include Rotue02
 
             return stationTimingsRoute01;
         }
