@@ -54,21 +54,28 @@
 </div>
 
 @*TODO: Add Title*@
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        @foreach (var stationTime in Model.StationTimings)
-        {
-            <dd>
-                @stationTime.TimeOfDay
-            </dd>
-        }
-    </dl>
-    <hr />
-</div>
 
 <div>
-    <a asp-action="Index" class="btn btn-success">Back</a>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
+    <div class="row">
+        <div class="col-sm-4"><h4>Route01</h4></div>
+        <div class="col-sm-4"><h4>Route02</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            @foreach (var stationTime in Model.StationTimings.route01)
+            {
+                <dd>
+                    @stationTime.TimeOfDay
+                </dd>
+            }
+        </div>
+        <div class="col-sm-4">
+            @foreach (var stationTime in Model.StationTimings.route02)
+            {
+                <dd>
+                    @stationTime.TimeOfDay
+                </dd>
+            }
+        </div>
+    </div>
 </div>
-

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metro2036.Services.Implementations;
+using System;
 
 namespace Metro2036.Services.Models.Station
 {
@@ -20,6 +21,6 @@ namespace Metro2036.Services.Models.Station
 
         public decimal Longitude { get; set; }
 
-        public DateTime[] StationTimings { get; set; }
+        public StationTimings StationTimings { get; set; }
     }
 }

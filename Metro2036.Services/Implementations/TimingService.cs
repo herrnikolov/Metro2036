@@ -25,6 +25,13 @@
         [JsonProperty("route_2_name")]
         public string RouteName02 { get; set; }
     }
+    public class StationTimings
+    {
+        public DateTime[] route01 { get; set; }
+        public DateTime[] route02 { get; set; }
+    }
+
+
     public class TimingService : BaseService, ITimingService
     {
         private Metro2036DbContext _context;
@@ -34,7 +41,7 @@
         }
 
         //Get by ID | Details
-        public DateTime[] GetTime(int StantionId)
+        public StationTimings GetTime(int StantionId)
         {
             string json;
             using (var client = new WebClient())
@@ -55,9 +62,20 @@
                 .Take(10)
                 .ToArray();
 
+            var stationTimingsRoute02 = deserializedTimes.route02
+                .Split(',')
+                .Select(x => DateTime.ParseExact(x, "HH:mm", CultureInfo.InvariantCulture))
+                .Where(x => x > currentTime)
+                .Take(10)
+                .ToArray();
+
+
+            StationTimings stationTimings = new StationTimings();
+            stationTimings.route01 = stationTimingsRoute01;
+            stationTimings.route02 = stationTimingsRoute02;
             //TODO: Include Rotue02
 
-            return stationTimingsRoute01;
+            return stationTimings;
         }
     }
 }
