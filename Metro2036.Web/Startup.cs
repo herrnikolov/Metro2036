@@ -1,9 +1,12 @@
 ﻿namespace Metro2036.Web
 {
     using System;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.HttpsPolicy;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -14,7 +17,6 @@
     using Metro2036.Models;
     using Metro2036.Services.Implementations;
     using Metro2036.Services.Interfaces;
-    using Microsoft.AspNetCore.Identity;
 
     public class Startup
     {
@@ -37,8 +39,8 @@
 
             // Use SQL Database if in Azure, otherwise, use Local SQL
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                    services.AddDbContext<Metro2036DbContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
+                services.AddDbContext<Metro2036DbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Metro2036Az")));
             else
                 services.AddDbContext<Metro2036DbContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Metro2036.Data")));
@@ -46,9 +48,9 @@
             // From Identity Configuration
             services
                 .AddIdentity<User, IdentityRole>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<Metro2036DbContext>();
+                .AddEntityFrameworkStores<Metro2036DbContext>()
+                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -92,32 +94,24 @@
             // Auto Mapper to be
             //services.AddAutoMapper();
 
-            //services.AddMvc(options =>
-            //{
-            //    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-            //});
-
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services
+                .AddMvc(options =>
+                {
+                    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+                })
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AddPageRoute("/Home/Index", "/");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
-            //services
-            //    .AddMvc(options =>
-            //    {
-            //        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-            //    })
-            //    .AddRazorPagesOptions(options =>
-            //    {
-            //        options.Conventions.AddPageRoute("/Home/Index", "/");
-            //    })
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             //Prevent CSRF in ASP.NET Core
             services.AddMvc(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         private static void ConfigureMetro2036Services(IServiceCollection services)
@@ -149,13 +143,13 @@
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>

@@ -4,7 +4,7 @@
     public class HomeController : BaseController
     {
         // GET: Home
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }

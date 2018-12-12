@@ -1,8 +1,8 @@
 ﻿namespace Metro2036.Data
 {
+    using Metro2036.Models;
     using Microsoft.EntityFrameworkCore;
     using Metro2036.Data.EntityConfiguration;
-    using Metro2036.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
     public class Metro2036DbContext : IdentityDbContext<User>
