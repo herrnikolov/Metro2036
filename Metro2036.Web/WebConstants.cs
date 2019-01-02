@@ -20,6 +20,5 @@
         public const string RoutesListPath = @"wwwroot/seedfiles/routes.json";
         public const string TrainsListPath = @"wwwroot/seedfiles/trains.json";
         public const string TravelLogsListPath = @"wwwroot/seedfiles/travellog.json";
-        
     }
 }
